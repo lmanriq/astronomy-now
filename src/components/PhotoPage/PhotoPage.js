@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import { POTD_URL } from '../../utils/constants'
 
 class PhotoPage extends Component {
+  async componentDidMount() {
+    const response = await fetch(POTD_URL);
+    const data = await response.json();
+  }
 
   render() {
     return(
