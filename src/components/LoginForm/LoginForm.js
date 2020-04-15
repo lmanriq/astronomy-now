@@ -13,7 +13,10 @@ class LoginForm extends Component {
   render() {
     return(
       <form>
-
+        <label>First Name:</label>
+        <input type="text" placeholder="your name" value={this.state.name} />
+        <label>Email:</label>
+        <input type="email" placeholder="email" value={this.state.email} />
       </form>
     )
   }
