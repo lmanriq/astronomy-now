@@ -12,13 +12,13 @@ class NavBar extends Component {
           <div className="welcome-msg ">
             <h1>Astronomy Now</h1>
             <h2>Welcome, Guest</h2>
-            <NavLink to="/login" style={{ textDecoration: 'none' }} >
+            <NavLink to="/login" activeClassName="active" style={{ textDecoration: 'none' }} >
               <button>login</button>
             </NavLink>
           </div>
         </article>
         <nav className="flex-container">
-          <NavLink to="/" style={{ textDecoration: "none" }}>
+          <NavLink exact to="/" activeClassName="active" style={{ textDecoration: "none" }}>
             <div className="nav-btn-container flex-container">
               <img src="/images/spaceship.svg" alt="spaceship icon" />
               <button>
@@ -26,7 +26,7 @@ class NavBar extends Component {
               </button>
             </div>
           </NavLink>
-          <NavLink to="/iss-tracking" style={{ textDecoration: 'none' }} >
+          <NavLink to="/iss-tracking" activeClassName="active" style={{ textDecoration: 'none' }} >
             <div className="nav-btn-container flex-container">
               <img src="/images/iss.svg" alt="ISS icon" />
               <button>
@@ -34,7 +34,7 @@ class NavBar extends Component {
               </button>
             </div>
           </NavLink>
-          <NavLink to="/hubble-news" style={{ textDecoration: 'none' }} >
+          <NavLink to="/hubble-news" activeClassName="active" style={{ textDecoration: 'none' }} >
             <div className="nav-btn-container flex-container">
               <img src="/images/hubble.svg" alt="Hubble telescope icon" />
               <button>
@@ -42,7 +42,7 @@ class NavBar extends Component {
               </button>
             </div>
           </NavLink>
-          <NavLink to="/favorites" style={{ textDecoration: 'none' }} >
+          <NavLink to="/favorites" activeClassName="active" style={{ textDecoration: 'none' }} >
             <div className="nav-btn-container flex-container">
               <img src="/images/alien.svg" alt="alien with heart eyes icon" />
               <button>
