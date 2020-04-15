@@ -4,9 +4,9 @@ import LoginForm from "../LoginForm/LoginForm";
 
 const LoginPage = () => {
   return(
-    <section className="main-page flex-container">
+    <section className="login-page main-page flex-container">
       <section className="logo-container flex-container">
-        <h1>Astronomy Now</h1>
+        <h1>Astronomy <span>Now</span></h1>
         <img src="/images/saturn.svg" alt="saturn logo"/>
       </section>
       <section className="form-container flex-container">
