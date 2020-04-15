@@ -1,0 +1,1 @@
+export const POTD_URL = 'https://api.nasa.gov/planetary/apod?api_key=K8bT9srIhxHahbiQkbH7EvTichFoJBi02JzMR5Ys';
