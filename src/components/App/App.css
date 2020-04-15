@@ -8,9 +8,18 @@
   height: 100%;
   width: 100%;
   background-color: #27536B;
+}
+
+.main-page {
   padding: 5em;
 }
 
 .flex-container {
   display: flex;
+}
+
+.logo {
+  height: 10em;
+  position: fixed;
+  margin: 1em;
 }
