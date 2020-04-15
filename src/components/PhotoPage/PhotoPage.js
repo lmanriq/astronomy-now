@@ -8,19 +8,21 @@ class PhotoPage extends Component {
     const response = await fetch(POTD_URL);
     const data = await response.json();
     this.props.loadPhotoOfTheDay(data);
-    console.log(data)
   }
 
   render() {
+    const { photoOfTheDay } = this.props;
+    const { title, url, explanation, date, copyright } = photoOfTheDay
     return(
       <section>
         <article className="image-container">
-          <img src="" alt="" />
+          <img src={url} alt={title} />
         </article>
         <article className="details-container">
-          <h2>Title</h2>
-          <h3>Date</h3>
-          <p>Description</p>
+          <h2>{title}</h2>
+          <h3>{date}</h3>
+          <p>{explanation}</p>
+          <p>Copyright: {copyright}</p>
         </article>
       </section>
     )
