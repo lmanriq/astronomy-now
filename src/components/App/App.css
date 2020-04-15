@@ -5,6 +5,12 @@
 }
 
 .App {
-  height: 100vh;
+  height: 100%;
   width: 100%;
+  background-color: #27536B;
+  padding: 5em;
+}
+
+.flex-container {
+  display: flex;
 }
