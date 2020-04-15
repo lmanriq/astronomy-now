@@ -1,28 +1,30 @@
 import React, { Component } from 'react';
+import './PhotoPage.css'
 import { POTD_URL } from '../../utils/constants';
 import { connect } from 'react-redux';
 import { loadPhotoOfTheDay } from '../../actions';
 
 class PhotoPage extends Component {
   async componentDidMount() {
-    const response = await fetch(POTD_URL);
-    const data = await response.json();
-    this.props.loadPhotoOfTheDay(data);
+    const potdResponse = await fetch(POTD_URL);
+    const potdData = await potdResponse.json();
+    this.props.loadPhotoOfTheDay(potdData);
   }
 
   render() {
     const { photoOfTheDay } = this.props;
-    const { title, url, explanation, date, copyright } = photoOfTheDay
+    const { title, url, hdurl, explanation, date, copyright } = photoOfTheDay
     return(
-      <section>
-        <article className="image-container">
+      <section className="photo-page flex-container">
+        <article className="image-container flex-container">
           <img src={url} alt={title} />
+          <a href={hdurl} target="_blank" rel="noopener noreferrer" download>Click to download HD Image</a>
         </article>
         <article className="details-container">
           <h2>{title}</h2>
           <h3>{date}</h3>
           <p>{explanation}</p>
-          <p>Copyright: {copyright}</p>
+          <p>© {copyright}</p>
         </article>
       </section>
     )

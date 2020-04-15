@@ -1,0 +1,24 @@
+.photo-page {
+  background-color: #FFF;
+}
+
+.image-container,
+.details-container {
+  padding: 1em;
+}
+
+.image-container {
+  width: 70%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details-container {
+  width: 30%;
+  text-align: center;
+}
+
+.image-container img {
+  width: 100%;
+}
