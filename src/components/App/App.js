@@ -2,51 +2,50 @@ import React from "react";
 import "./App.css";
 import PhotoPage from "../PhotoPage/PhotoPage";
 import NavBar from "../NavBar/NavBar";
+import LoginPage from "../LoginPage/LoginPage";
 import { Route, Switch } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Switch>
-        <Route path="/"
-          component={() =>
-            <NavBar />
-          }
-        />
-        <Route path="/" exact 
-          component={() => 
-            <PhotoPage />
-          } 
-        />
-        <Route
-          path="/login"
-          exact
-          // component={() =>
-          //   <LoginPage />
-          // }
-        />
-        <Route
-          path="/iss-tracking"
-          exact
-          // component={() =>
-          //   <LoginPage />
-          // }
-        />
-        <Route
-          path="/hubble-news"
-          exact
-          // component={() =>
-          //   <LoginPage />
-          // }
-        />
-        <Route
-          path="/favorites"
-          exact
-          // component={() =>
-          //   <LoginPage />
-          // }
-        />
-      </Switch>
+      <Route path="/"
+        component={() =>
+          <NavBar />
+        }
+      />
+      <Route path="/" exact 
+        component={() => 
+          <PhotoPage />
+        } 
+      />
+      <Route
+        path="/login"
+        exact
+        component={() =>
+          <LoginPage />
+        }
+      />
+      {/* <Route
+        path="/iss-tracking"
+        exact
+        // component={() =>
+        //   <LoginPage />
+        // }
+      />
+      <Route
+        path="/hubble-news"
+        exact
+        // component={() =>
+        //   <LoginPage />
+        // }
+      />
+      <Route
+        path="/favorites"
+        exact
+        // component={() =>
+        //   <LoginPage />
+        // }
+      /> */}
       <footer>
         <p>Created by Lili Manrique</p>
         <div>
