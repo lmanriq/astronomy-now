@@ -5,7 +5,7 @@ import PhotoPage from '../PhotoPage/PhotoPage'
 function App() {
   return (
     <div className="App">
-      <img src="/images/saturn.svg" alt="saturn logo" className="logo"/>
+      <NavBar /> 
       <section className="main-page">
         <PhotoPage />
         <footer>

@@ -17,9 +17,3 @@
 .flex-container {
   display: flex;
 }
-
-.logo {
-  height: 10em;
-  position: fixed;
-  margin: 1em;
-}
