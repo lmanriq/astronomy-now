@@ -12,7 +12,8 @@
 }
 
 .main-page {
-  padding: 5em;
+  border: 5em solid #27536B;
+  padding-top: 8em;
 }
 
 .flex-container {

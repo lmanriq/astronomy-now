@@ -15,7 +15,7 @@ class PhotoPage extends Component {
     const { photoOfTheDay } = this.props;
     const { title, url, hdurl, explanation, date, copyright } = photoOfTheDay
     return(
-      <section className="photo-page flex-container">
+      <section className="photo-page main-page flex-container">
         <article className="image-container flex-container">
           <img src={url} alt={title} />
           <a href={hdurl} target="_blank" rel="noopener noreferrer" download>Click to download HD Image</a>
