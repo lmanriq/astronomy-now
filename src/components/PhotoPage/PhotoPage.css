@@ -1,5 +1,10 @@
 .photo-page {
   background-color: #FFF;
+  flex-direction: column;
+}
+
+.photo-page h1 {
+  text-align: center;
 }
 
 .image-container,
@@ -8,17 +13,16 @@
 }
 
 .image-container {
-  width: 60%;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
 
-.details-container {
-  width: 40%;
-  text-align: center;
+.image-container img {
+  height: 60vh;
+  width: auto;
 }
 
-.image-container img {
-  width: 100%;
+.details-container {
+  text-align: center;
 }
