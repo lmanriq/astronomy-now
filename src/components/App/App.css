@@ -20,3 +20,7 @@
 .flex-container {
   display: flex;
 }
+
+footer {
+  height: 8vh;
+}
