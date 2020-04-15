@@ -1,6 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import "./LoginPage.css";
 
-class LoginPage extends Component {
-  
+const LoginPage = () => {
+  return(
+    <section className="main-page">
+
+    </section>
+  )
 }
+
+export default LoginPage;
