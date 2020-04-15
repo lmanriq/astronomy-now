@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { POTD_URL } from '../../utils/constants'
+import { POTD_URL } from '../../utils/constants';
+import { connect } from 'react-redux';
+import { loadPhotoOfTheDay } from '../../actions';
 
 class PhotoPage extends Component {
   async componentDidMount() {
     const response = await fetch(POTD_URL);
     const data = await response.json();
+    this.props.loadPhotoOfTheDay(data);
+    console.log(data)
   }
 
   render() {
@@ -23,4 +27,12 @@ class PhotoPage extends Component {
   }
 }
 
-export default PhotoPage;
+const mapStateToProps = state => ({
+  photoOfTheDay: state.photoOfTheDay
+})
+
+const mapDispatchToProps = dispatch => ({
+  loadPhotoOfTheDay: photo => dispatch(loadPhotoOfTheDay(photo))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhotoPage)
