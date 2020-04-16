@@ -38,6 +38,7 @@ class NewsPage extends Component {
       return (
         <NewsCard
           key={story.news_id}
+          id={story.news_id}
           title={story.name}
           date={story.publication}
           url={story.url}
