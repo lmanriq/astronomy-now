@@ -18,6 +18,7 @@ class LoginForm extends Component {
 
   submitLogin(e) {
     e.preventDefault();
+    loginUser(this.state);
   }
 
   render() {
