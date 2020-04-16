@@ -26,3 +26,8 @@ export const removeFavorite = id => ({
   type: 'REMOVE_FAVORITE',
   id
 })
+
+export const updateISSPosition = position => ({
+  type: 'UPDATE_ISS_POSITION',
+  position
+})
