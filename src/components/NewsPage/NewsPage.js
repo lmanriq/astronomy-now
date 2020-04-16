@@ -13,25 +13,25 @@ import {
 
 class NewsPage extends Component {
   async componentDidMount() {
-    // try {
-    //   const newsResponse = await fetch(
-    //     PROXY_URL + HUBBLE_BASE + HUBBLE_NEWS_ENDPOINT
-    //   );
-    //   console.log(newsResponse)
-    //   const newsData = await newsResponse.json();
-    //   this.props.loadNews(newsData);
-    //   const detailsUrls = newsData.map(story => fetch(PROXY_URL + HUBBLE_BASE + HUBBLE_SPECIFIC_STORY_ENDPOINT(story.news_id)));
-    //   const responses = await Promise.all(detailsUrls)
-    //   const parsedResponses = responses.map(res => res.json());
-    //   const allData = await Promise.all(parsedResponses)
-    //   this.props.loadNews(allData);
-    // } catch (error) {
-    //   console.error(error.message);
-    // }
+    try {
+      const newsResponse = await fetch(
+        PROXY_URL + HUBBLE_BASE + HUBBLE_NEWS_ENDPOINT
+      );
+      console.log(newsResponse)
+      const newsData = await newsResponse.json();
+      this.props.loadNews(newsData);
+      const detailsUrls = newsData.map(story => fetch(PROXY_URL + HUBBLE_BASE + HUBBLE_SPECIFIC_STORY_ENDPOINT(story.news_id)));
+      const responses = await Promise.all(detailsUrls)
+      const parsedResponses = responses.map(res => res.json());
+      const allData = await Promise.all(parsedResponses)
+      this.props.loadNews(allData);
+    } catch (error) {
+      console.error(error.message);
+    }
   }
 
   render() {
-    this.props.loadNews(mockNewsData);
+    // this.props.loadNews(mockNewsData);
     const { news } = this.props;
 
     const newsCards = news.map(story => {
