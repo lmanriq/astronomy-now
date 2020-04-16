@@ -22,14 +22,15 @@ class LoginForm extends Component {
   }
 
   render() {
+    const disabled = !this.state.name || !this.state.email;
     return(
       <form className="flex-container">
         <label>First Name:</label>
         <input name="name" type="text" placeholder="your name" value={this.state.name} onChange={(e) => this.handleChange(e)} />
         <label>Email:</label>
         <input name="email" type="email" placeholder="email" value={this.state.email} onChange={(e) => this.handleChange(e)} />
-        <NavLink to="/">
-          <button type="button" onClick={this.submitLogin()}>login</button>
+        <NavLink exact to="/">
+          <button type="button" onClick={this.submitLogin()} disabled={disabled}>login</button>
         </NavLink>
       </form>
     )
