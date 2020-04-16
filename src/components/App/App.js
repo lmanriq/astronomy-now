@@ -3,7 +3,7 @@ import "./App.css";
 import PhotoPage from "../PhotoPage/PhotoPage";
 import NavBar from "../NavBar/NavBar";
 import LoginPage from "../LoginPage/LoginPage";
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 function App() {
   return (
