@@ -1,8 +1,31 @@
 import React from "react";
 import "./NewsCard.css";
+import { connect } from "react-redux";
+import { addFavorite, removeFavorite } from "../../actions";
 
 const NewsCard = props => {
-  const { title, url, image, description, date} = props;
+  const { id, title, url, image, description, date, favorites, addFavorite, removeFavorite } = props;
+
+  const favBtn = (
+    <button onClick={() => addFavorite(id)}>
+      <img
+        className="heart-icon"
+        src="/images/empty-heart.svg"
+        alt="heart icon"
+      />
+    </button>
+  );
+  const unFavBtn = (
+    <button onClick={() => removeFavorite(id)}>
+      <img
+        className="heart-icon"
+        src="/images/full-heart.svg"
+        alt="heart icon"
+      />
+    </button>
+  );
+
+  const btn = favorites.includes(id) ? unFavBtn : favBtn;
 
   return (
     <section className="article-container flex-container">
@@ -20,11 +43,20 @@ const NewsCard = props => {
         </div>
       </article>
       <div className="favorites-box flex-container">
-        <img className="heart-icon" src="/images/empty-heart.svg" alt="heart icon" />
+        {btn}
         <p>Add to Favorites</p>
       </div>
     </section>
   );
 };
 
-export default NewsCard;
+const mapStateToProps = state => ({
+  favorites: state.favorites
+});
+
+const mapDispatchToProps = dispatch => ({
+  addFavorite: id => dispatch(addFavorite(id)),
+  removeFavorite: id => dispatch(removeFavorite(id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsCard);
