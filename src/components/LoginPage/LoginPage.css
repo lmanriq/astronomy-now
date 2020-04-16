@@ -1,6 +1,7 @@
 .login-page {
   padding: 0;
   height: 92vh;
+  text-align: center;
 }
 
 .logo-container,
@@ -9,6 +10,7 @@
   align-items: center;
   justify-content: space-around;
   padding: 3em;
+  width: 50%;
 }
 
 .logo-container h1 {
