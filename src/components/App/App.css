@@ -14,8 +14,21 @@
 .main-page {
   border: 5em solid #27536B;
   padding-top: 6em;
+  background-color: #FFF;
 }
 
 .flex-container {
   display: flex;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+footer {
+  height: 8vh;
 }

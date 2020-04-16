@@ -39,7 +39,6 @@ header {
 .nav-btn-container {
   flex-direction: column;
   align-items: center;
-  height: 10em;
 }
 
 nav {
