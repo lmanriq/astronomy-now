@@ -2,6 +2,7 @@ import React from "react";
 import "./NavBar.css";
 import { NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { logoutUser } from "../../actions";
 
 const NavBar = props => {
   if (props.location.pathname === "/login") {
@@ -17,7 +18,7 @@ const NavBar = props => {
   );
   const logoutBtn = (
     <NavLink exact to="/" style={{ textDecoration: "none" }}>
-      <button>logout</button>
+      <button onClick={props.logoutUser}>logout</button>
     </NavLink>
   );
   const userFlowBtn = user.name ? logoutBtn : loginBtn;
@@ -91,4 +92,8 @@ const mapStateToProps = state => ({
   user: state.user
 });
 
-export default withRouter(connect(mapStateToProps)(NavBar));
+const mapDispatchToProps = dispatch => ({
+  logoutUser: () => dispatch(logoutUser())
+})
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar));
