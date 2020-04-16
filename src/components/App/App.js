@@ -3,6 +3,7 @@ import "./App.css";
 import PhotoPage from "../PhotoPage/PhotoPage";
 import NavBar from "../NavBar/NavBar";
 import LoginPage from "../LoginPage/LoginPage";
+import NewsPage from "../NewsPage/NewsPage";
 import { Route } from "react-router-dom";
 
 function App() {
@@ -25,27 +26,27 @@ function App() {
           <LoginPage />
         }
       />
-      {/* <Route
+      <Route
         path="/iss-tracking"
         exact
         // component={() =>
-        //   <LoginPage />
+          
         // }
       />
       <Route
         path="/hubble-news"
         exact
-        // component={() =>
-        //   <LoginPage />
-        // }
+        component={() =>
+          <NewsPage />
+        }
       />
       <Route
         path="/favorites"
         exact
         // component={() =>
-        //   <LoginPage />
+          
         // }
-      /> */}
+      />
       <footer>
         <p>Created by Lili Manrique</p>
         <div>

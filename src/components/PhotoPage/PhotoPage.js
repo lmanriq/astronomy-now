@@ -6,9 +6,14 @@ import { loadPhotoOfTheDay } from "../../actions";
 
 class PhotoPage extends Component {
   async componentDidMount() {
-    const potdResponse = await fetch(POTD_URL);
-    const potdData = await potdResponse.json();
-    this.props.loadPhotoOfTheDay(potdData);
+    try {
+      const potdResponse = await fetch(POTD_URL);
+      const potdData = await potdResponse.json();
+      this.props.loadPhotoOfTheDay(potdData);      
+    }
+    catch(error) {
+      console.error(error.message)
+    }
   }
 
   render() {
@@ -16,7 +21,7 @@ class PhotoPage extends Component {
     const { title, url, hdurl, explanation, date, copyright } = photoOfTheDay;
     return (
       <section className="photo-page main-page flex-container">
-        <h1>NASA's Photo of The Day</h1>
+        <h1>NASA's Astronomy Photo of The Day</h1>
         <section>
           <article className="image-container flex-container">
             <img src={url} alt={title} />
