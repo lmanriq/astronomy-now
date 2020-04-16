@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { loadNews } from "../../actions";
 import NewsCard from "../NewsCard/NewsCard";
-import './NewsPage.css'
+import "./NewsPage.css";
 import mockNewsData from "../../data/mockNewsData";
 import {
   HUBBLE_BASE,
@@ -31,8 +31,8 @@ class NewsPage extends Component {
   }
 
   render() {
-    // const { news } = this.props;
-    const news = mockNewsData;
+    this.props.loadNews(mockNewsData);
+    const { news } = this.props;
 
     const newsCards = news.map(story => {
       return (
@@ -51,9 +51,7 @@ class NewsPage extends Component {
     return (
       <section className="news-page main-page flex-container">
         <h1>News from the Hubble Space Telescope</h1>
-        <div className="news-container">
-          {newsCards}
-        </div>
+        <div className="news-container">{newsCards}</div>
       </section>
     );
   }
