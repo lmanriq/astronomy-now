@@ -6,9 +6,14 @@ import { loadPhotoOfTheDay } from "../../actions";
 
 class PhotoPage extends Component {
   async componentDidMount() {
-    const potdResponse = await fetch(POTD_URL);
-    const potdData = await potdResponse.json();
-    this.props.loadPhotoOfTheDay(potdData);
+    try {
+      const potdResponse = await fetch(POTD_URL);
+      const potdData = await potdResponse.json();
+      this.props.loadPhotoOfTheDay(potdData);      
+    }
+    catch(error) {
+      console.error(error.message)
+    }
   }
 
   render() {
