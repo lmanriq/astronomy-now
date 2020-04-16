@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { loadNews } from "../../actions";
 import {
   HUBBLE_BASE,
   HUBBLE_NEWS_ENDPOINT,
@@ -9,7 +11,9 @@ import {
 class NewsPage extends Component {
   async componentDidMount() {
     try {
-      const newsResponse = await fetch(PROXY_URL + HUBBLE_BASE + HUBBLE_NEWS_ENDPOINT);
+      const newsResponse = await fetch(
+        PROXY_URL + HUBBLE_BASE + HUBBLE_NEWS_ENDPOINT
+      );
       const newsData = await newsResponse.json();
       console.log(newsData);
     } catch (error) {
@@ -26,4 +30,12 @@ class NewsPage extends Component {
   }
 }
 
-export default NewsPage;
+const mapStateToProps = state => ({
+  news: state.news
+});
+
+const mapDispatchToProps = dispatch => ({
+  loadNews: news => dispatch(loadNews(news))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsPage);
