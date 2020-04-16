@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./LoginForm.css";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions";
+import { NavLink } from "react-router-dom";
 
 class LoginForm extends Component {
   constructor() {
@@ -16,9 +17,8 @@ class LoginForm extends Component {
     this.setState({[e.target.name]: e.target.value})
   }
 
-  submitLogin(e) {
-    e.preventDefault();
-    loginUser(this.state);
+  submitLogin() {
+    this.props.loginUser(this.state);
   }
 
   render() {
@@ -28,7 +28,9 @@ class LoginForm extends Component {
         <input name="name" type="text" placeholder="your name" value={this.state.name} onChange={(e) => this.handleChange(e)} />
         <label>Email:</label>
         <input name="email" type="email" placeholder="email" value={this.state.email} onChange={(e) => this.handleChange(e)} />
-        <button type="button" onClick={(e) => this.submitLogin(e)}>login</button>
+        <NavLink to="/">
+          <button type="button" onClick={this.submitLogin()}>login</button>
+        </NavLink>
       </form>
     )
   }
