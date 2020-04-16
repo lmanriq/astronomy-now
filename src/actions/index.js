@@ -23,6 +23,6 @@ export const addFavorite = id => ({
 })
 
 export const removeFavorite = id => ({
-  type: 'ADD_FAVORITE',
+  type: 'REMOVE_FAVORITE',
   id
 })
