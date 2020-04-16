@@ -1,14 +1,26 @@
 import React from "react";
 import "./NavBar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-const NavBar = (props) => {
-  if (window.location.pathname === "/astronomy-now/login") {
+const NavBar = props => {
+  if (props.location.pathname === "/login") {
     return null;
   }
+
   const { user } = props;
-  const username = user ? user.name : 'Guest';
+  const username = user.name ? user.name : "Guest";
+  const loginBtn = (
+    <NavLink to="/login" style={{ textDecoration: "none" }}>
+      <button>login</button>
+    </NavLink>
+  );
+  const logoutBtn = (
+    <NavLink exact to="/" style={{ textDecoration: "none" }}>
+      <button>logout</button>
+    </NavLink>
+  );
+  const userFlowBtn = user.name ? logoutBtn : loginBtn;
 
   return (
     <header className="flex-container">
@@ -17,13 +29,7 @@ const NavBar = (props) => {
         <div className="welcome-msg ">
           <h1>Astronomy Now</h1>
           <h2>Welcome, {username}</h2>
-          <NavLink
-            to="/login"
-            activeClassName="active"
-            style={{ textDecoration: "none" }}
-          >
-            <button>login</button>
-          </NavLink>
+          {userFlowBtn}
         </div>
       </article>
       <nav className="flex-container">
@@ -81,9 +87,8 @@ const NavBar = (props) => {
   );
 };
 
-
 const mapStateToProps = state => ({
   user: state.user
-})
+});
 
-export default connect(mapStateToProps)(NavBar);
+export default withRouter(connect(mapStateToProps)(NavBar));
