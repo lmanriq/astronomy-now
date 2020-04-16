@@ -31,3 +31,9 @@ export const updateISSPosition = position => ({
   type: 'UPDATE_ISS_POSITION',
   position
 })
+
+export const loadPeople = peopleData => ({
+  type: 'LOAD_PEOPLE',
+  peopleData
+})
+
