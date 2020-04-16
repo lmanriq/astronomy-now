@@ -3,13 +3,10 @@ import { connect } from 'react-redux';
 import NewsCard from "../NewsCard/NewsCard";
 
 class FavoritesPage extends Component {
-  componentDidMount() {
-    
-  }
-
   render() {
-    const { favorites } = this.props;
-    const newsCards = favorites.map(story => {
+    const { favorites, news } = this.props;
+    const favoriteStories = news.filter(story => favorites.includes(story.news_id))
+    const newsCards = favoriteStories.map(story => {
       console.log(story)
       return (
         <NewsCard
@@ -37,7 +34,8 @@ class FavoritesPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  favorites: state.favorites
+  favorites: state.favorites,
+  news: state.news
 });
 
 export default connect(mapStateToProps, null)(FavoritesPage);
