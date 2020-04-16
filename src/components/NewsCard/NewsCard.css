@@ -4,17 +4,35 @@ a:link {
 
 .news-card {
   width: 80%;
-  height: 30em;
+  height: 20em;
   border: 1px solid #27536B;
+  margin: 1em auto;
 }
 
-.text-container {
+.card-text-container {
   height: 50%;
   overflow-y: scroll;
+  padding: 1em;
+  text-align: center;
+}
+
+.card-text-container h1,
+.card-text-container p {
+  margin: 0.5em;
 }
 
 .card-image-container {
   height: 50%;
+  position: relative;
+}
+
+.card-image-container p {
+  position: absolute;
+  left: 0.5em;
+  bottom: 0.5em;
+  color: white;
+  font-weight: 800;
+  font-size: 2em;
 }
 
 .card-image-container img {
