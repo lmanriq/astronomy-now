@@ -15,16 +15,23 @@ class NewsPage extends Component {
         PROXY_URL + HUBBLE_BASE + HUBBLE_NEWS_ENDPOINT
       );
       const newsData = await newsResponse.json();
-      console.log(newsData);
+      this.props.loadNews(newsData);
+      const detailsUrls = newsData.map(story => fetch(PROXY_URL + HUBBLE_BASE + HUBBLE_SPECIFIC_STORY_ENDPOINT(story.news_id)));
+      const responses = await Promise.all(detailsUrls)
+      const parsedResponses = responses.map(res => res.json());
+      const allData = await Promise.all(parsedResponses)
+      this.props.loadNews(allData);
     } catch (error) {
       console.error(error.message);
     }
   }
 
   render() {
+
     return (
       <section className="news-page main-page">
         <h1>News from the Hubble Space Telescope</h1>
+        {newsCards}
       </section>
     );
   }
