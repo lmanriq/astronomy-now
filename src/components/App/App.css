@@ -21,6 +21,14 @@
   display: flex;
 }
 
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
 footer {
   height: 8vh;
 }
