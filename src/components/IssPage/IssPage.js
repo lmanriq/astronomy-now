@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./IssPage.css";
-import { updateISSPosition, updatePeople } from "../../actions";
+import { updateISSPosition, loadPeople } from "../../actions";
 import { connect } from "react-redux";
 import {
   ISS_BASE,
@@ -12,7 +12,7 @@ class IssPage extends Component {
   async componentDidMount() {
     const peopleResponse = await fetch(ISS_BASE + ISS_PEOPLE_ENDPOINT);
     const peopleData = await peopleResponse.json();
-    this.props.updatePeople(peopleData);
+    this.props.loadPeople(peopleData);
     // const updatePosition = async () => {
     //   const nowResponse = await fetch(ISS_BASE + ISS_NOW_ENDPOINT);
     //   const nowData = await nowResponse.json();
@@ -23,7 +23,8 @@ class IssPage extends Component {
   }
 
   render() {
-    const { issPosition } = this.props;
+    const { issPosition, peopleData } = this.props;
+    const peopleList = peopleData.people ? peopleData.people.map(person => <li>{person.name}, {person.craft}</li>) : 'loading...'
     return (
       <section className="iss-page main-page">
         <div className="iss-map-container"></div>
@@ -32,7 +33,8 @@ class IssPage extends Component {
             The International Space Station is currently over {issPosition.latitude},
             {issPosition.longitude}
           </p>
-          <p>There are currently 6 humans in space</p>
+          <p>There are currently {peopleData.number} humans in space</p>
+          <ul>{peopleList}</ul>
         </div>
       </section>
     );
@@ -40,11 +42,13 @@ class IssPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  issPosition: state.issPosition
+  issPosition: state.issPosition,
+  peopleData: state.peopleData
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateISSPosition: position => dispatch(updateISSPosition(position))
+  updateISSPosition: position => dispatch(updateISSPosition(position)),
+  loadPeople: peopleData => dispatch(loadPeople(peopleData))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(IssPage);
