@@ -4,13 +4,15 @@ import { user } from './user';
 import { news } from './news';
 import { favorites } from './favorites';
 import { issPosition } from './issPosition';
+import { peopleData } from './peopleData';
 
 const rootReducer = combineReducers({
   photoOfTheDay,
   user,
   news,
   favorites,
-  issPosition
+  issPosition,
+  peopleData
 })
 
 export default rootReducer;
