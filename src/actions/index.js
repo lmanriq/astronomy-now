@@ -11,3 +11,8 @@ export const loginUser = user => ({
 export const logoutUser = user => ({
   type: 'LOGOUT_USER'
 })
+
+export const loadNews = news => ({
+  type: 'LOAD_NEWS',
+  news
+})
