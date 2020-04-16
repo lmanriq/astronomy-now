@@ -3,10 +3,12 @@ import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 
-const NavBar = () => {
+const NavBar = (props) => {
   if (window.location.pathname === "/astronomy-now/login") {
     return null;
   }
+  const { user } = props;
+  const username = user ? user.name : 'Guest';
 
   return (
     <header className="flex-container">
@@ -14,7 +16,7 @@ const NavBar = () => {
         <img src="/images/saturn.svg" alt="saturn logo" className="logo" />
         <div className="welcome-msg ">
           <h1>Astronomy Now</h1>
-          <h2>Welcome, Guest</h2>
+          <h2>Welcome, {username}</h2>
           <NavLink
             to="/login"
             activeClassName="active"
@@ -79,4 +81,9 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps)(NavBar);
