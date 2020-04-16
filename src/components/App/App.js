@@ -4,6 +4,7 @@ import PhotoPage from "../PhotoPage/PhotoPage";
 import NavBar from "../NavBar/NavBar";
 import LoginPage from "../LoginPage/LoginPage";
 import NewsPage from "../NewsPage/NewsPage";
+import FavoritesPage from "../FavoritesPage/FavoritesPage";
 import { Route } from "react-router-dom";
 
 function App() {
@@ -43,9 +44,9 @@ function App() {
       <Route
         path="/favorites"
         exact
-        // component={() =>
-          
-        // }
+        component={() =>
+          <FavoritesPage />
+        }
       />
       <footer>
         <p>Created by Lili Manrique</p>
