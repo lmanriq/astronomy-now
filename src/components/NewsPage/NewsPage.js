@@ -70,7 +70,9 @@ class NewsPage extends Component {
     return (
       <section className="news-page main-page flex-container">
         <h1>News from the Hubble Space Telescope</h1>
-        {newsCards}
+        <div className="news-container">
+          {newsCards}
+        </div>
       </section>
     );
   }

@@ -1,4 +1,10 @@
 .news-page {
   flex-direction: column;
   align-items: center;
+  column-count: 2;
+}
+
+.news-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
