@@ -42,3 +42,8 @@ export const loadPassovers = passovers => ({
   passovers
 })
 
+export const loadSearchResults = results => ({
+  type: 'LOAD_RESULTS',
+  results
+})
+
