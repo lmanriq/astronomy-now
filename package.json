@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/dom": "^7.2.1",
     "redux-devtools": "^3.5.0"
   }
 }
