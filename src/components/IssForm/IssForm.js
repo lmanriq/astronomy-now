@@ -6,7 +6,7 @@ import {
 } from "../../utils/constants";
 import './IssForm.css'
 import { connect } from "react-redux";
-import { loadSearchResults } from "../../actions";
+import { loadSearchResults, showError, removeError } from "../../actions";
 
 const moment = require("moment");
 moment().format();
@@ -26,6 +26,7 @@ class IssForm extends Component {
 
   async searchPassover() {
     const { lat, lon } = this.state;
+    const {loadSearchResults, showError, removeError } = this.props;
     console.log(lat, lon);
     if (lat < 80 && lat > -80 && lon < 180 && lon > -180) {
       try {
@@ -33,17 +34,20 @@ class IssForm extends Component {
           PROXY_URL + ISS_BASE + ISS_PASSTIMES_ENDPOINT(lat, lon)
         );
         const passData = await passResponse.json();
-        this.props.loadSearchResults(passData.response);
+        removeError();
+        loadSearchResults(passData.response);
       }
       catch (error) {
-        console.error(error.message)
+        showError(error.message)
       }
+    } else {
+      showError('Values must be within range')
     }
   }
 
   render() {
     const { lat, lon } = this.state;
-    const { searchResults } = this.props;
+    const { searchResults, error } = this.props;
     const disabled = !lat || !lon;
     const resultsList = searchResults.map((result, index) => (
       <li key={index}>
@@ -87,7 +91,8 @@ class IssForm extends Component {
           </button>
         </form>
         <section className="search-results">
-          <ul>{resultsList}</ul>
+          {error && <h4>{error}</h4>}
+          <ul>{!error && resultsList}</ul>
         </section>
       </section>
     );
@@ -95,11 +100,14 @@ class IssForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  searchResults: state.searchResults
+  searchResults: state.searchResults,
+  error: state.error
 });
 
 const mapDispatchToProps = dispatch => ({
-  loadSearchResults: results => dispatch(loadSearchResults(results))
+  loadSearchResults: results => dispatch(loadSearchResults(results)),
+  showError: error => dispatch(showError(error)),
+  removeError: () => dispatch(removeError())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(IssForm);
