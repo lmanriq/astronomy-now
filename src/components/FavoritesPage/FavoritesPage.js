@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import NewsCard from "../NewsCard/NewsCard";
+import PropTypes from 'prop-types';
 
 const FavoritesPage = (props) => {
   const { favorites, news } = props;
@@ -37,3 +38,8 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, null)(FavoritesPage);
+
+FavoritesPage.propTypes = {
+  favorites: PropTypes.array,
+  news: PropTypes.array
+}

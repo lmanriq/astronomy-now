@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import "./IssMap.css";
 import { Map, Marker, TileLayer } from "react-leaflet";
 import L from 'leaflet';
+import PropTypes from 'prop-types';
 
 class IssMap extends Component {
   render() {
@@ -39,3 +40,7 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(IssMap);
+
+IssMap.propTypes = {
+  issPosition: PropTypes.object
+}

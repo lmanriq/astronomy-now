@@ -3,6 +3,7 @@ import "./LoginForm.css";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions";
 import { NavLink } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 class LoginForm extends Component {
   constructor() {
@@ -42,3 +43,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(null, mapDispatchToProps)(LoginForm);
+
+LoginForm.propTypes = {
+  loginUser: PropTypes.func
+}

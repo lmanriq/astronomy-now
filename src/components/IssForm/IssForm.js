@@ -7,6 +7,7 @@ import {
 import "./IssForm.css";
 import { connect } from "react-redux";
 import { loadSearchResults, showError, removeError } from "../../actions";
+import PropTypes from 'prop-types';
 
 const moment = require("moment");
 moment().format();
@@ -115,3 +116,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(IssForm);
+
+IssForm.propTypes = {
+  searchResults: PropTypes.array,
+  error: PropTypes.string,
+  loadSearchResults: PropTypes.func,
+  showError: PropTypes.func,
+  removeError: PropTypes.func
+}

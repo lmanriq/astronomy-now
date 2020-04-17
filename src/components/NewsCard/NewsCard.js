@@ -2,6 +2,7 @@ import React from "react";
 import "./NewsCard.css";
 import { connect } from "react-redux";
 import { addFavorite, removeFavorite } from "../../actions";
+import PropTypes from 'prop-types';
 
 const moment = require('moment');
 moment().format();
@@ -63,3 +64,16 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsCard);
+
+NewsCard.propTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string, 
+  url: PropTypes.string, 
+  image: PropTypes.string, 
+  description: PropTypes.string, 
+  date: PropTypes.string,
+  favorites: PropTypes.array,
+  addFavorite: PropTypes.func,
+  removeFavorite: PropTypes.func
+}
+

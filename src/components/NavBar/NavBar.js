@@ -3,6 +3,7 @@ import "./NavBar.css";
 import { NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions";
+import PropTypes from 'prop-types';
 
 const NavBar = props => {
   if (props.location.pathname === "/login") {
@@ -97,3 +98,9 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar));
+
+NavBar.propTypes = {
+  user: PropTypes.object,
+  location: PropTypes.object,
+  logoutUser: PropTypes.func
+}

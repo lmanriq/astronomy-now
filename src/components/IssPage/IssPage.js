@@ -9,6 +9,7 @@ import {
   ISS_NOW_ENDPOINT,
   ISS_PEOPLE_ENDPOINT
 } from "../../utils/constants";
+import PropTypes from 'prop-types';
 
 class IssPage extends Component {
   async componentDidMount() {
@@ -65,3 +66,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(IssPage);
+
+IssPage.propTypes = {
+  issPosition: PropTypes.object,
+  peopleData: PropTypes.object,
+  updateISSPosition: PropTypes.func,
+  loadPeople: PropTypes.func,
+}
