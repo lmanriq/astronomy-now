@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import {
-  ISS_BASE,
-  ISS_PASSTIMES_ENDPOINT,
-  PROXY_URL
-} from "../../utils/constants";
 import "./IssForm.css";
 import { connect } from "react-redux";
 import { loadSearchResults, showError, removeError } from "../../actions";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { fetchPasstimes } from "../../utils/apiCalls";
 
 const moment = require("moment");
 moment().format();
@@ -30,10 +26,7 @@ class IssForm extends Component {
     const { loadSearchResults, showError, removeError } = this.props;
     if (lat < 80 && lat > -80 && lon < 180 && lon > -180) {
       try {
-        const passResponse = await fetch(
-          PROXY_URL + ISS_BASE + ISS_PASSTIMES_ENDPOINT(lat, lon)
-        );
-        const passData = await passResponse.json();
+        const passData = await fetchPasstimes(lat, lon);
         removeError();
         loadSearchResults(passData.response);
       } catch (error) {
@@ -68,6 +61,7 @@ class IssForm extends Component {
               <label htmlFor="lat">latitude (-80 to 80):</label>
               <input
                 onChange={e => this.handleChange(e)}
+                data-testid="lat-input"
                 id="lat"
                 type="number"
                 min="-80"
@@ -79,6 +73,7 @@ class IssForm extends Component {
               <label htmlFor="lon">longitude (-180 to 180):</label>
               <input
                 onChange={e => this.handleChange(e)}
+                data-testid="lon-input"
                 id="lon"
                 type="number"
                 min="-180"
@@ -123,4 +118,4 @@ IssForm.propTypes = {
   loadSearchResults: PropTypes.func,
   showError: PropTypes.func,
   removeError: PropTypes.func
-}
+};

@@ -15,7 +15,7 @@ const NewsCard = props => {
       <img
         className="heart-icon"
         src="/images/empty-heart.svg"
-        alt="heart icon"
+        alt="empty heart icon"
       />
     </button>
   );
@@ -24,7 +24,7 @@ const NewsCard = props => {
       <img
         className="heart-icon"
         src="/images/full-heart.svg"
-        alt="heart icon"
+        alt="full heart icon"
       />
     </button>
   );

@@ -3,28 +3,16 @@ import { connect } from "react-redux";
 import { loadNews } from "../../actions";
 import NewsCard from "../NewsCard/NewsCard";
 import "./NewsPage.css";
-import mockNewsData from "../../data/mockNewsData";
 import PropTypes from 'prop-types';
-import {
-  HUBBLE_BASE,
-  HUBBLE_NEWS_ENDPOINT,
-  HUBBLE_SPECIFIC_STORY_ENDPOINT,
-  PROXY_URL
-} from "../../utils/constants";
+import { fetchAllNews, fetchNewsDetails } from "../../utils/apiCalls";
+
 
 class NewsPage extends Component {
   async componentDidMount() {
     try {
-      const newsResponse = await fetch(
-        PROXY_URL + HUBBLE_BASE + HUBBLE_NEWS_ENDPOINT
-      );
-      console.log(newsResponse)
-      const newsData = await newsResponse.json();
+      const newsData = await fetchAllNews();
       this.props.loadNews(newsData);
-      const detailsUrls = newsData.map(story => fetch(PROXY_URL + HUBBLE_BASE + HUBBLE_SPECIFIC_STORY_ENDPOINT(story.news_id)));
-      const responses = await Promise.all(detailsUrls)
-      const parsedResponses = responses.map(res => res.json());
-      const allData = await Promise.all(parsedResponses)
+      const allData = await fetchNewsDetails(newsData);
       this.props.loadNews(allData);
     } catch (error) {
       console.error(error.message);
@@ -32,9 +20,7 @@ class NewsPage extends Component {
   }
 
   render() {
-    // this.props.loadNews(mockNewsData);
     const { news } = this.props;
-
     const newsCards = news.map(story => {
       return (
         <NewsCard

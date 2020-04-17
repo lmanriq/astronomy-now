@@ -4,21 +4,16 @@ import { updateISSPosition, loadPeople } from "../../actions";
 import { connect } from "react-redux";
 import IssMap from "../IssMap/IssMap";
 import IssForm from "../IssForm/IssForm";
-import {
-  ISS_BASE,
-  ISS_NOW_ENDPOINT,
-  ISS_PEOPLE_ENDPOINT
-} from "../../utils/constants";
+import { fetchPosition, fetchPeopleData } from "../../utils/apiCalls";
 import PropTypes from 'prop-types';
+
 
 class IssPage extends Component {
   async componentDidMount() {
-    const peopleResponse = await fetch(ISS_BASE + ISS_PEOPLE_ENDPOINT);
-    const peopleData = await peopleResponse.json();
+    const peopleData = await fetchPeopleData();
     this.props.loadPeople(peopleData);
     const updatePosition = async () => {
-      const nowResponse = await fetch(ISS_BASE + ISS_NOW_ENDPOINT);
-      const nowData = await nowResponse.json();
+      const nowData = await fetchPosition();
       this.props.updateISSPosition(nowData.iss_position);
       setTimeout(updatePosition, 5000);
     };
