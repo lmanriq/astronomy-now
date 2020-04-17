@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./PhotoPage.css";
-import { POTD_URL } from "../../utils/constants";
 import { connect } from "react-redux";
 import { loadPhotoOfTheDay } from "../../actions";
 import PropTypes from 'prop-types';
+import { fetchPOTD } from "../../utils/apiCalls";
 
 const moment = require('moment');
 moment().format();
@@ -11,8 +11,7 @@ moment().format();
 class PhotoPage extends Component {
   async componentDidMount() {
     try {
-      const potdResponse = await fetch(POTD_URL);
-      const potdData = await potdResponse.json();
+      const potdData = await fetchPOTD();
       this.props.loadPhotoOfTheDay(potdData);      
     }
     catch(error) {

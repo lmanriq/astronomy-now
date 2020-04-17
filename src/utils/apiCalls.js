@@ -6,7 +6,8 @@ import {
   ISS_PEOPLE_ENDPOINT,
   HUBBLE_BASE,
   HUBBLE_NEWS_ENDPOINT,
-  HUBBLE_SPECIFIC_STORY_ENDPOINT
+  HUBBLE_SPECIFIC_STORY_ENDPOINT,
+  POTD_URL
 } from "../utils/constants";
 
 export const fetchPasstimes = async (lat, lon) => {
@@ -48,3 +49,9 @@ export const fetchNewsDetails = async (newsData) => {
   const allData = await Promise.all(parsedResponses);
   return allData;
 };
+
+export const fetchPOTD = async () => {
+  const potdResponse = await fetch(POTD_URL);
+  const potdData = await potdResponse.json();
+  return potdData;
+}
