@@ -8,6 +8,6 @@ import rootReducer from '../../reducers';
 
 describe('News Page', () => {
   it('Should render what we expect', () => {
-
+    
   })
 })
