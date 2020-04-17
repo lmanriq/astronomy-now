@@ -5,6 +5,8 @@ import { news } from './news';
 import { favorites } from './favorites';
 import { issPosition } from './issPosition';
 import { peopleData } from './peopleData';
+import { passovers } from './passovers';
+
 
 const rootReducer = combineReducers({
   photoOfTheDay,
@@ -12,7 +14,8 @@ const rootReducer = combineReducers({
   news,
   favorites,
   issPosition,
-  peopleData
+  peopleData,
+  passovers
 })
 
 export default rootReducer;
