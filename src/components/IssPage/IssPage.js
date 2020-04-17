@@ -66,3 +66,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(IssPage);
+
+IssPage.propTypes = {
+  issPosition: PropTypes.object,
+  peopleData: PropTypes.object,
+  updateISSPosition: PropTypes.func,
+  loadPeople: PropTypes.func,
+}
