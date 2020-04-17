@@ -37,3 +37,8 @@ export const loadPeople = peopleData => ({
   peopleData
 })
 
+export const loadPassovers = passovers => ({
+  type: 'LOAD_PASSOVERS',
+  passovers
+})
+
