@@ -4,7 +4,7 @@ import {
   ISS_PASSTIMES_ENDPOINT,
   PROXY_URL
 } from "../../utils/constants";
-import './IssForm.css'
+import "./IssForm.css";
 import { connect } from "react-redux";
 import { loadSearchResults, showError, removeError } from "../../actions";
 
@@ -26,8 +26,7 @@ class IssForm extends Component {
 
   async searchPassover() {
     const { lat, lon } = this.state;
-    const {loadSearchResults, showError, removeError } = this.props;
-    console.log(lat, lon);
+    const { loadSearchResults, showError, removeError } = this.props;
     if (lat < 80 && lat > -80 && lon < 180 && lon > -180) {
       try {
         const passResponse = await fetch(
@@ -36,12 +35,17 @@ class IssForm extends Component {
         const passData = await passResponse.json();
         removeError();
         loadSearchResults(passData.response);
-      }
-      catch (error) {
-        showError(error.message)
+      } catch (error) {
+        showError(error.message);
+        setTimeout(() => {
+          removeError();
+        }, 3000);
       }
     } else {
-      showError('Values must be within range')
+      showError("Values must be within range");
+      setTimeout(() => {
+        removeError();
+      }, 3000);
     }
   }
 
