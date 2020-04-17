@@ -37,7 +37,9 @@ class IssForm extends Component {
 
   render() {
     const { lat, lon } = this.state;
+    const { searchResults } = this.props;
     const disabled = !lat || !lon;
+    const resultsList = searchResults.map((result, index) => <li key={index}>{result.risetime}</li>)
     return (
       <section className="form-section">
         <form>
@@ -69,15 +71,21 @@ class IssForm extends Component {
           </button>
         </form>
         <section className="search-results">
-
+          <ul>
+            {resultsList}
+          </ul>
         </section>
       </section>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  searchResults: state.searchResults
+})
+
 const mapDispatchToProps = dispatch => ({
   loadSearchResults: results => dispatch(loadSearchResults(results))
 });
 
-export default connect(null, mapDispatchToProps)(IssForm);
+export default connect(mapStateToProps, mapDispatchToProps)(IssForm);
