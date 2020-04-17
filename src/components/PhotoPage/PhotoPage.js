@@ -4,6 +4,9 @@ import { POTD_URL } from "../../utils/constants";
 import { connect } from "react-redux";
 import { loadPhotoOfTheDay } from "../../actions";
 
+const moment = require('moment');
+moment().format();
+
 class PhotoPage extends Component {
   async componentDidMount() {
     try {
@@ -21,6 +24,7 @@ class PhotoPage extends Component {
     const { title, url, hdurl, explanation, date, copyright } = photoOfTheDay;
     return (
       <section className="photo-page main-page flex-container">
+        <h1>{moment(date).format('ll')}</h1>
         <h1>NASA's Astronomy Photo of The Day</h1>
         <section>
           <article className="image-container flex-container">
@@ -31,7 +35,6 @@ class PhotoPage extends Component {
           </article>
           <article className="details-container">
             <h2>{title}</h2>
-            <h3>{date}</h3>
             <p>{explanation}</p>
             <p>© {copyright}</p>
           </article>

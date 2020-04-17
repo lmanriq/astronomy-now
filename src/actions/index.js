@@ -26,3 +26,32 @@ export const removeFavorite = id => ({
   type: 'REMOVE_FAVORITE',
   id
 })
+
+export const updateISSPosition = position => ({
+  type: 'UPDATE_ISS_POSITION',
+  position
+})
+
+export const loadPeople = peopleData => ({
+  type: 'LOAD_PEOPLE',
+  peopleData
+})
+
+export const loadPassovers = passovers => ({
+  type: 'LOAD_PASSOVERS',
+  passovers
+})
+
+export const loadSearchResults = results => ({
+  type: 'LOAD_RESULTS',
+  results
+})
+
+export const showError = error => ({
+  type: 'SHOW_ERROR',
+  error
+})
+
+export const removeError = () => ({
+  type: 'REMOVE_ERROR'
+})

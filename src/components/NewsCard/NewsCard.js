@@ -3,6 +3,9 @@ import "./NewsCard.css";
 import { connect } from "react-redux";
 import { addFavorite, removeFavorite } from "../../actions";
 
+const moment = require('moment');
+moment().format();
+
 const NewsCard = props => {
   const { id, title, url, image, description, date, favorites, addFavorite, removeFavorite } = props;
 
@@ -38,7 +41,7 @@ const NewsCard = props => {
         </a>
         <div className="card-text-container">
           <h1>{title}</h1>
-          <p>{date}</p>
+          <p>{moment(date).format('ll')}</p>
           <p>{description}</p>
         </div>
       </article>

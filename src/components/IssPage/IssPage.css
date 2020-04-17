@@ -1,0 +1,10 @@
+.iss-map-container,
+.iss-form-container {
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.iss-form-container {
+  flex-direction: column;
+}

@@ -1,0 +1,40 @@
+.input-container,
+.form-section form {
+  flex-direction: column;
+}
+
+.input-container {
+  align-items: center;
+}
+
+.input-container label,
+.input-container input,
+.form-section form {
+  margin: 0.5em;
+}
+
+.form-section {
+  height: 60%;
+  margin-top: 1em;
+}
+
+.search-results ul,
+.search-results h4 {
+  text-align: center;
+  margin: 1em;
+}
+
+.search-results ul {
+  list-style: none;
+}
+
+.inputs-wrapper {
+  justify-content: space-between;
+}
+
+.form-section form button {
+  width: 30%;
+  height: 2em;
+  margin-top: 1em;
+  align-self: center;
+}

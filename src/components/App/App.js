@@ -5,6 +5,7 @@ import NavBar from "../NavBar/NavBar";
 import LoginPage from "../LoginPage/LoginPage";
 import NewsPage from "../NewsPage/NewsPage";
 import FavoritesPage from "../FavoritesPage/FavoritesPage";
+import IssPage from "../IssPage/IssPage";
 import { Route } from "react-router-dom";
 
 function App() {
@@ -30,9 +31,9 @@ function App() {
       <Route
         path="/iss-tracking"
         exact
-        // component={() =>
-          
-        // }
+        component={() =>
+          <IssPage />
+        }
       />
       <Route
         path="/hubble-news"
