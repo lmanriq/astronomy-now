@@ -3,6 +3,7 @@ import "./IssPage.css";
 import { updateISSPosition, loadPeople } from "../../actions";
 import { connect } from "react-redux";
 import IssMap from "../IssMap/IssMap";
+import IssForm from "../IssForm/IssForm";
 import {
   ISS_BASE,
   ISS_NOW_ENDPOINT,
@@ -45,6 +46,7 @@ class IssPage extends Component {
           </p>
           <p>There are currently {peopleData.number} humans in space</p>
           <ul>{peopleList}</ul>
+          <IssForm />
         </div>
       </section>
     );
