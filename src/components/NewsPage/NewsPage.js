@@ -67,3 +67,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsPage);
+
+NewsPage.propTypes = {
+  new: PropTypes.array,
+  loadNews: PropTypes.func
+}
