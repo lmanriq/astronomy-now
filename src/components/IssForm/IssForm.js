@@ -116,3 +116,11 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(IssForm);
+
+IssForm.propTypes = {
+  searchResults: PropTypes.array,
+  error: PropTypes.string,
+  loadSearchResults: PropTypes.func,
+  showError: PropTypes.func,
+  removeError: PropTypes.func
+}

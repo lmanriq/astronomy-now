@@ -41,3 +41,6 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(IssMap);
 
+IssMap.propTypes = {
+  issPosition: PropTypes.object
+}
