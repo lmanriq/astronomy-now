@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import {
+  ISS_BASE,
+  ISS_PASSTIMES_ENDPOINT,
+  PROXY_URL
+} from "../../utils/constants";
 
 class IssForm extends Component {
   constructor() {
@@ -13,19 +18,27 @@ class IssForm extends Component {
     this.setState({[e.target.id]: e.target.value})
   }
 
-  searchPassover() {
-    
+  async searchPassover() {
+    const { lat, lon } = this.state;
+    console.log(lat, lon)
+    if(lat < 80 && lat > -80 && lon < 180 && lon > -180) {
+      const passResponse = await fetch(PROXY_URL + ISS_BASE + ISS_PASSTIMES_ENDPOINT(lat, lon));
+      const passData = await passResponse.json();
+      console.log(passData.response)
+    }
   }
 
   render() {
+    const { lat, lon } = this.state;
+    const disabled = !lat || !lon;
     return (
       <form>
         <h2>When will the ISS pass over me?</h2>
-        <label htmlFor="lat">latitude:</label>
-        <input onChange={(e) => this.handleChange(e)} id="lat" type="number" min="-80" max="80" value={this.state.lat}/>
-        <label htmlFor="lon">latitude:</label>
-        <input onChange={(e) => this.handleChange(e)} id="lon" type="number" min="-180" max="180" value={this.state.lon}/>
-        <button type="button">search</button>
+        <label htmlFor="lat">latitude (-80 to 80):</label>
+        <input onChange={(e) => this.handleChange(e)} id="lat" type="number" min="-80" max="80" value={lat}/>
+        <label htmlFor="lon">longitude (-180 to 180):</label>
+        <input onChange={(e) => this.handleChange(e)} id="lon" type="number" min="-180" max="180" value={lon}/>
+        <button onClick={this.searchPassover.bind(this)} type="button" disabled={disabled}>search</button>
       </form>
     );
   }
