@@ -18,6 +18,7 @@ describe("Login Form ", () => {
     );
     expect(getByText("First Name:")).toBeInTheDocument();
     expect(getByText("Email:")).toBeInTheDocument();
+    expect(getByText("login")).toBeInTheDocument();
     expect(getByPlaceholderText("your name")).toBeInTheDocument();
     expect(getByPlaceholderText("email")).toBeInTheDocument();
   });
