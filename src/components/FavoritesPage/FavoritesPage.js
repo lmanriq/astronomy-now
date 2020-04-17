@@ -38,3 +38,8 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, null)(FavoritesPage);
+
+FavoritesPage.propTypes = {
+  favorites: PropTypes.array,
+  news: PropTypes.array
+}
