@@ -61,6 +61,7 @@ class IssForm extends Component {
               <label htmlFor="lat">latitude (-80 to 80):</label>
               <input
                 onChange={e => this.handleChange(e)}
+                data-testid="lat-input"
                 id="lat"
                 type="number"
                 min="-80"
@@ -72,6 +73,7 @@ class IssForm extends Component {
               <label htmlFor="lon">longitude (-180 to 180):</label>
               <input
                 onChange={e => this.handleChange(e)}
+                data-testid="lon-input"
                 id="lon"
                 type="number"
                 min="-180"
