@@ -8,6 +8,16 @@ import rootReducer from '../../reducers';
 
 describe('ISS Form', () => {
   it('Should render what we expect', () => {
-
+    const store = createStore(rootReducer);
+    const { getByText } = render(
+      <Provider store={store}>
+        <Router>
+          <IssForm />
+        </Router>
+      </Provider>
+    );
+    expect(getByText("When will the ISS pass over me?")).toBeInTheDocument();
+    expect(getByText("latitude (-80 to 80):")).toBeInTheDocument();
+    expect(getByText("longitude (-180 to 180):")).toBeInTheDocument();
   })
 })
