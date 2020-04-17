@@ -3,7 +3,10 @@ import {
   ISS_PASSTIMES_ENDPOINT,
   PROXY_URL,
   ISS_NOW_ENDPOINT,
-  ISS_PEOPLE_ENDPOINT
+  ISS_PEOPLE_ENDPOINT,
+  HUBBLE_BASE,
+  HUBBLE_NEWS_ENDPOINT,
+  HUBBLE_SPECIFIC_STORY_ENDPOINT
 } from "../utils/constants";
 
 export const fetchPasstimes = async (lat, lon) => {
@@ -24,4 +27,24 @@ export const fetchPeopleData = async () => {
   const peopleResponse = await fetch(ISS_BASE + ISS_PEOPLE_ENDPOINT);
   const peopleData = await peopleResponse.json();
   return peopleData;
+};
+
+export const fetchAllNews = async () => {
+  const newsResponse = await fetch(
+    PROXY_URL + HUBBLE_BASE + HUBBLE_NEWS_ENDPOINT
+  );
+  const newsData = await newsResponse.json();
+  return newsData;
+};
+
+export const fetchNewsDetails = async (newsData) => {
+  const detailsUrls = newsData.map(story =>
+    fetch(
+      PROXY_URL + HUBBLE_BASE + HUBBLE_SPECIFIC_STORY_ENDPOINT(story.news_id)
+    )
+  );
+  const responses = await Promise.all(detailsUrls);
+  const parsedResponses = responses.map(res => res.json());
+  const allData = await Promise.all(parsedResponses);
+  return allData;
 };
