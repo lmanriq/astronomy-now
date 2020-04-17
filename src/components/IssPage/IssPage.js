@@ -25,6 +25,7 @@ class IssPage extends Component {
 
   render() {
     const { issPosition, peopleData } = this.props;
+    const { latitude, longitude } = issPosition;
     const peopleList = peopleData.people
       ? peopleData.people.map((person, index) => (
           <li key={index}>
@@ -33,14 +34,14 @@ class IssPage extends Component {
         ))
       : "loading...";
     return (
-      <section className="iss-page main-page">
+      <section className="iss-page main-page flex-container">
         <div className="iss-map-container">
           <IssMap />
         </div>
         <div className="iss-form-container">
           <p>
             The International Space Station is currently over{" "}
-            {issPosition.latitude},{issPosition.longitude}
+            {latitude} {latitude > 0 ? 'N' : 'S'}, {longitude} {longitude > 0 ? 'E' : 'W'}
           </p>
           <p>There are currently {peopleData.number} humans in space</p>
           <ul>{peopleList}</ul>

@@ -15,7 +15,6 @@ class IssMap extends Component {
       iconUrl: '/images/iss-black.svg',
       iconSize: [60, 60]
     })
-    console.log(latitude, longitude)
     if (longitude && latitude) {
       return (
         <Map
