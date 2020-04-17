@@ -35,10 +35,10 @@ class IssPage extends Component {
       : "loading...";
     return (
       <section className="iss-page main-page flex-container">
-        <div className="iss-map-container">
+        <div className="iss-map-container flex-container">
           <IssMap />
         </div>
-        <div className="iss-form-container">
+        <div className="iss-form-container flex-container">
           <p>
             The International Space Station is currently over{" "}
             {latitude} {latitude > 0 ? 'N' : 'S'}, {longitude} {longitude > 0 ? 'E' : 'W'}
