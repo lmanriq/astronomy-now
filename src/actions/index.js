@@ -47,3 +47,11 @@ export const loadSearchResults = results => ({
   results
 })
 
+export const showError = error => ({
+  type: 'SHOW_ERROR',
+  error
+})
+
+export const removeError = () => ({
+  type: 'REMOVE_ERROR'
+})

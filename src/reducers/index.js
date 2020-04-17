@@ -7,6 +7,7 @@ import { issPosition } from './issPosition';
 import { peopleData } from './peopleData';
 import { passovers } from './passovers';
 import { searchResults } from './searchResults';
+import { error } from './error';
 
 
 const rootReducer = combineReducers({
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   issPosition,
   peopleData,
   passovers,
-  searchResults
+  searchResults,
+  error
 })
 
 export default rootReducer;
