@@ -54,3 +54,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoPage);
+
+PhotoPage.propTypes = {
+  photoOfTheDay: PropTypes.object,
+  loadPhotoOfTheDay: PropTypes.func
+}
