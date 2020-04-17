@@ -64,3 +64,16 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsCard);
+
+NewsCard.propTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string, 
+  url: PropTypes.string, 
+  image: PropTypes.string, 
+  description: PropTypes.string, 
+  date: PropTypes.string,
+  favorites: PropTypes.array,
+  addFavorite: PropTypes.func,
+  removeFavorite: PropTypes.func
+}
+
