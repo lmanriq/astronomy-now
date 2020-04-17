@@ -40,8 +40,9 @@ class IssPage extends Component {
           <IssMap />
         </div>
         <div className="iss-form-container flex-container">
+          <h1>International Space Station Tracking</h1>
           <p>
-            The International Space Station is currently over{" "}
+            The ISS is currently over{" "}
             {latitude} {latitude > 0 ? 'N' : 'S'}, {longitude} {longitude > 0 ? 'E' : 'W'}
           </p>
           <p>There are currently {peopleData.number} humans in space</p>

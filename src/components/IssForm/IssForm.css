@@ -31,8 +31,6 @@
 .form-section form button {
   width: 30%;
   height: 2em;
-  border: none;
   margin-top: 1em;
-  background-color: #F9A52B;
   align-self: center;
 }
