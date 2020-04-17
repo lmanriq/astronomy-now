@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./IssPage.css";
 import { updateISSPosition, loadPeople } from "../../actions";
 import { connect } from "react-redux";
-import IssMap from "../IssMap/IssMap"
+import IssMap from "../IssMap/IssMap";
 import {
   ISS_BASE,
   ISS_NOW_ENDPOINT,
@@ -18,14 +18,20 @@ class IssPage extends Component {
       const nowResponse = await fetch(ISS_BASE + ISS_NOW_ENDPOINT);
       const nowData = await nowResponse.json();
       this.props.updateISSPosition(nowData.iss_position);
-      // setTimeout(updatePosition, 5000);
+      setTimeout(updatePosition, 5000);
     };
     updatePosition();
   }
 
   render() {
     const { issPosition, peopleData } = this.props;
-    const peopleList = peopleData.people ? peopleData.people.map(person => <li>{person.name}, {person.craft}</li>) : 'loading...'
+    const peopleList = peopleData.people
+      ? peopleData.people.map((person, index) => (
+          <li key={index}>
+            {person.name}, {person.craft}
+          </li>
+        ))
+      : "loading...";
     return (
       <section className="iss-page main-page">
         <div className="iss-map-container">
@@ -33,8 +39,8 @@ class IssPage extends Component {
         </div>
         <div className="iss-form-container">
           <p>
-            The International Space Station is currently over {issPosition.latitude},
-            {issPosition.longitude}
+            The International Space Station is currently over{" "}
+            {issPosition.latitude},{issPosition.longitude}
           </p>
           <p>There are currently {peopleData.number} humans in space</p>
           <ul>{peopleList}</ul>
