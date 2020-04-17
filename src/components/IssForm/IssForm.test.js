@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "../../reducers";
 import { fetchPasstimes } from "../../utils/apiCalls";
-jest.mock("../../utils/apiCalls")
+jest.mock("../../utils/apiCalls");
 
 describe("ISS Form", () => {
   it("Should render what we expect", () => {
@@ -74,10 +74,40 @@ describe("ISS Form", () => {
     fireEvent.change(lat, { target: { value: "7" } });
     fireEvent.change(lon, { target: { value: "80" } });
     fireEvent.click(searchBtn);
-    expect(await waitForElement(() => getByText('April 17, 2020 5:13 PM'))).toBeInTheDocument();
-    expect(await waitForElement(() => getByText('April 17, 2020 6:48 PM'))).toBeInTheDocument();
-    expect(await waitForElement(() => getByText('April 18, 2020 4:45 AM'))).toBeInTheDocument();
-    expect(await waitForElement(() => getByText('April 18, 2020 6:22 AM'))).toBeInTheDocument();
-    expect(await waitForElement(() => getByText('April 18, 2020 4:27 PM'))).toBeInTheDocument();
+    expect(
+      await waitForElement(() => getByText("April 17, 2020 5:13 PM"))
+    ).toBeInTheDocument();
+    expect(
+      await waitForElement(() => getByText("April 17, 2020 6:48 PM"))
+    ).toBeInTheDocument();
+    expect(
+      await waitForElement(() => getByText("April 18, 2020 4:45 AM"))
+    ).toBeInTheDocument();
+    expect(
+      await waitForElement(() => getByText("April 18, 2020 6:22 AM"))
+    ).toBeInTheDocument();
+    expect(
+      await waitForElement(() => getByText("April 18, 2020 4:27 PM"))
+    ).toBeInTheDocument();
+  });
+
+  it("Should load error message when lat/lon are invalid", async () => {
+    const store = createStore(rootReducer);
+    const { getByText, getByTestId } = render(
+      <Provider store={store}>
+        <Router>
+          <IssForm />
+        </Router>
+      </Provider>
+    );
+    const searchBtn = getByText("search");
+    const lat = getByTestId("lat-input");
+    const lon = getByTestId("lon-input");
+    fireEvent.change(lat, { target: { value: "99" } });
+    fireEvent.change(lon, { target: { value: "80" } });
+    fireEvent.click(searchBtn);
+    expect(
+      await waitForElement(() => getByText("Values must be within range"))
+    ).toBeInTheDocument();
   });
 });
