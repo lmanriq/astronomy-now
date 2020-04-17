@@ -39,7 +39,11 @@ class IssForm extends Component {
     const { lat, lon } = this.state;
     const { searchResults } = this.props;
     const disabled = !lat || !lon;
-    const resultsList = searchResults.map((result, index) => <li key={index}>{result.risetime}</li>)
+    const resultsList = searchResults.map((result, index) => (
+      <li key={index}>
+        {moment(new Date(result.risetime * 1000)).format("LLL")}
+      </li>
+    ));
     return (
       <section className="form-section">
         <form>
@@ -71,9 +75,7 @@ class IssForm extends Component {
           </button>
         </form>
         <section className="search-results">
-          <ul>
-            {resultsList}
-          </ul>
+          <ul>{resultsList}</ul>
         </section>
       </section>
     );
@@ -82,7 +84,7 @@ class IssForm extends Component {
 
 const mapStateToProps = state => ({
   searchResults: state.searchResults
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   loadSearchResults: results => dispatch(loadSearchResults(results))
