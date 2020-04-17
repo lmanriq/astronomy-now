@@ -9,6 +9,7 @@ import {
   ISS_NOW_ENDPOINT,
   ISS_PEOPLE_ENDPOINT
 } from "../../utils/constants";
+import PropTypes from 'prop-types';
 
 class IssPage extends Component {
   async componentDidMount() {

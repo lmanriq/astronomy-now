@@ -3,6 +3,7 @@ import "./NavBar.css";
 import { NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions";
+import PropTypes from 'prop-types';
 
 const NavBar = props => {
   if (props.location.pathname === "/login") {

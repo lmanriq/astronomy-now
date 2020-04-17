@@ -2,6 +2,7 @@ import React from "react";
 import "./NewsCard.css";
 import { connect } from "react-redux";
 import { addFavorite, removeFavorite } from "../../actions";
+import PropTypes from 'prop-types';
 
 const moment = require('moment');
 moment().format();

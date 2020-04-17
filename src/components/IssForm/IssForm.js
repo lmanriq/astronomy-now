@@ -7,6 +7,7 @@ import {
 import "./IssForm.css";
 import { connect } from "react-redux";
 import { loadSearchResults, showError, removeError } from "../../actions";
+import PropTypes from 'prop-types';
 
 const moment = require("moment");
 moment().format();

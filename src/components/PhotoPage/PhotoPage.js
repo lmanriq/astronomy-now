@@ -3,6 +3,7 @@ import "./PhotoPage.css";
 import { POTD_URL } from "../../utils/constants";
 import { connect } from "react-redux";
 import { loadPhotoOfTheDay } from "../../actions";
+import PropTypes from 'prop-types';
 
 const moment = require('moment');
 moment().format();

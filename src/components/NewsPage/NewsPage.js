@@ -4,6 +4,7 @@ import { loadNews } from "../../actions";
 import NewsCard from "../NewsCard/NewsCard";
 import "./NewsPage.css";
 import mockNewsData from "../../data/mockNewsData";
+import PropTypes from 'prop-types';
 import {
   HUBBLE_BASE,
   HUBBLE_NEWS_ENDPOINT,
