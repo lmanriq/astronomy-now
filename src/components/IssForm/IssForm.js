@@ -4,6 +4,11 @@ import {
   ISS_PASSTIMES_ENDPOINT,
   PROXY_URL
 } from "../../utils/constants";
+import { connect } from "react-redux";
+import { loadSearchResults } from "../../actions";
+
+const moment = require("moment");
+moment().format();
 
 class IssForm extends Component {
   constructor() {
@@ -15,16 +20,18 @@ class IssForm extends Component {
   }
 
   handleChange(e) {
-    this.setState({[e.target.id]: e.target.value})
+    this.setState({ [e.target.id]: e.target.value });
   }
 
   async searchPassover() {
     const { lat, lon } = this.state;
-    console.log(lat, lon)
-    if(lat < 80 && lat > -80 && lon < 180 && lon > -180) {
-      const passResponse = await fetch(PROXY_URL + ISS_BASE + ISS_PASSTIMES_ENDPOINT(lat, lon));
+    console.log(lat, lon);
+    if (lat < 80 && lat > -80 && lon < 180 && lon > -180) {
+      const passResponse = await fetch(
+        PROXY_URL + ISS_BASE + ISS_PASSTIMES_ENDPOINT(lat, lon)
+      );
       const passData = await passResponse.json();
-      console.log(passData.response)
+      this.props.loadSearchResults(passData.response);
     }
   }
 
@@ -32,16 +39,45 @@ class IssForm extends Component {
     const { lat, lon } = this.state;
     const disabled = !lat || !lon;
     return (
-      <form>
-        <h2>When will the ISS pass over me?</h2>
-        <label htmlFor="lat">latitude (-80 to 80):</label>
-        <input onChange={(e) => this.handleChange(e)} id="lat" type="number" min="-80" max="80" value={lat}/>
-        <label htmlFor="lon">longitude (-180 to 180):</label>
-        <input onChange={(e) => this.handleChange(e)} id="lon" type="number" min="-180" max="180" value={lon}/>
-        <button onClick={this.searchPassover.bind(this)} type="button" disabled={disabled}>search</button>
-      </form>
+      <section className="form-section">
+        <form>
+          <h2>When will the ISS pass over me?</h2>
+          <label htmlFor="lat">latitude (-80 to 80):</label>
+          <input
+            onChange={e => this.handleChange(e)}
+            id="lat"
+            type="number"
+            min="-80"
+            max="80"
+            value={lat}
+          />
+          <label htmlFor="lon">longitude (-180 to 180):</label>
+          <input
+            onChange={e => this.handleChange(e)}
+            id="lon"
+            type="number"
+            min="-180"
+            max="180"
+            value={lon}
+          />
+          <button
+            onClick={this.searchPassover.bind(this)}
+            type="button"
+            disabled={disabled}
+          >
+            search
+          </button>
+        </form>
+        <section className="search-results">
+
+        </section>
+      </section>
     );
   }
 }
 
-export default IssForm;
+const mapDispatchToProps = dispatch => ({
+  loadSearchResults: results => dispatch(loadSearchResults(results))
+});
+
+export default connect(null, mapDispatchToProps)(IssForm);
