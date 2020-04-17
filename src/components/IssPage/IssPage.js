@@ -7,6 +7,7 @@ import IssForm from "../IssForm/IssForm";
 import { fetchPosition, fetchPeopleData } from "../../utils/apiCalls";
 import PropTypes from 'prop-types';
 
+
 class IssPage extends Component {
   async componentDidMount() {
     const peopleData = await fetchPeopleData();

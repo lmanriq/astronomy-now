@@ -7,7 +7,7 @@ import { createStore } from 'redux';
 import rootReducer from '../../reducers';
 
 describe('ISS Map', () => {
-  it('Should render what we expect', async () => {
+  it('Should render what we expect', () => {
     const store = createStore(rootReducer);
     render(
       <Provider store={store}>
