@@ -98,3 +98,9 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar));
+
+NavBar.propTypes = {
+  user: PropTypes.object,
+  location: PropTypes.object,
+  logoutUser: PropTypes.func
+}
