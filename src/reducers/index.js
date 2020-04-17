@@ -6,6 +6,7 @@ import { favorites } from './favorites';
 import { issPosition } from './issPosition';
 import { peopleData } from './peopleData';
 import { passovers } from './passovers';
+import { searchResults } from './searchResults';
 
 
 const rootReducer = combineReducers({
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   favorites,
   issPosition,
   peopleData,
-  passovers
+  passovers,
+  searchResults
 })
 
 export default rootReducer;
