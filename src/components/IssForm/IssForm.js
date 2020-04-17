@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./IssForm.css";
 import { connect } from "react-redux";
 import { loadSearchResults, showError, removeError } from "../../actions";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { fetchPasstimes } from "../../utils/apiCalls";
 
 const moment = require("moment");
@@ -118,4 +118,4 @@ IssForm.propTypes = {
   loadSearchResults: PropTypes.func,
   showError: PropTypes.func,
   removeError: PropTypes.func
-}
+};
