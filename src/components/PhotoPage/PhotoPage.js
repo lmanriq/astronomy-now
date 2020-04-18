@@ -3,7 +3,7 @@ import "./PhotoPage.css";
 import { connect } from "react-redux";
 import { loadPhotoOfTheDay } from "../../actions";
 import PropTypes from 'prop-types';
-import { fetchPOTD } from "../../utils/apiCalls";
+import { fetchPOTD, fetchRoverPhotos } from "../../utils/apiCalls";
 
 const moment = require('moment');
 moment().format();
@@ -12,6 +12,11 @@ class PhotoPage extends Component {
   async componentDidMount() {
     try {
       const potdData = await fetchPOTD();
+      const today = moment().format("YYYY-MM-DD");
+      const yesterday = moment(today).subtract(1, 'days').format("YYYY-MM-DD");
+      const roverDataToday = await fetchRoverPhotos(today);
+      const roverDataYesterday = await fetchRoverPhotos(yesterday);
+      console.log([...roverDataYesterday.photos, ...roverDataToday.photos])
       this.props.loadPhotoOfTheDay(potdData);      
     }
     catch(error) {
