@@ -7,7 +7,9 @@ import {
   HUBBLE_BASE,
   HUBBLE_NEWS_ENDPOINT,
   HUBBLE_SPECIFIC_STORY_ENDPOINT,
-  POTD_URL
+  NASA_BASE,
+  POTD_URL,
+  ROVER_ENDPOINT
 } from "../utils/constants";
 
 export const fetchPasstimes = async (lat, lon) => {
@@ -51,7 +53,13 @@ export const fetchNewsDetails = async (newsData) => {
 };
 
 export const fetchPOTD = async () => {
-  const potdResponse = await fetch(POTD_URL);
+  const potdResponse = await fetch(NASA_BASE + POTD_URL);
   const potdData = await potdResponse.json();
   return potdData;
+}
+
+export const fetchRoverPhotos = async (date) => {
+  const roverResponse = await fetch(NASA_BASE + ROVER_ENDPOINT(date));
+  const roverData = await roverResponse.json();
+  return roverData;
 }
