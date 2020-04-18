@@ -8,6 +8,7 @@ import { peopleData } from './peopleData';
 import { passovers } from './passovers';
 import { searchResults } from './searchResults';
 import { error } from './error';
+import { roverPhotos } from './roverPhotos';
 
 
 const rootReducer = combineReducers({
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   peopleData,
   passovers,
   searchResults,
-  error
+  error,
+  roverPhotos
 })
 
 export default rootReducer;
