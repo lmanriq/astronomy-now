@@ -25,3 +25,14 @@
 .details-container {
   text-align: center;
 }
+
+.rover-photo {
+  width: 10em;
+  margin: 0.5em auto;
+  height: 10em;
+}
+
+.rover-photos-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr)
+}
