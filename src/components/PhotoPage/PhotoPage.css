@@ -2,8 +2,13 @@
   flex-direction: column;
 }
 
-.photo-page h1 {
+.photo-page h1,
+.photo-page p {
   text-align: center;
+}
+
+.photo-page h1 {
+  margin: 0.5em;
 }
 
 .image-container,
@@ -18,8 +23,7 @@
 }
 
 .image-container img {
-  /* height: 60vh; */
-  width: auto;
+  width: 80%;
 }
 
 .details-container {
@@ -27,7 +31,7 @@
 }
 
 .photo-explanation {
-  margin: 1em 5em;
+  margin: 0 5em;
 }
 
 .rover-photos-container {

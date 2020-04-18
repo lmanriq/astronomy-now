@@ -46,12 +46,13 @@ class PhotoPage extends Component {
             </a>
           </article>
           <article className="details-container">
-            <h2>{title}</h2>
+            <h1>{title}</h1>
             <p className="photo-explanation">{explanation}</p>
             <p>© {copyright}</p>
           </article>
         </section>
         <h1>Mars Curiosity Rover Photos (Today and Yesterday)</h1>
+        <p>click to expand</p>
         <section className="rover-photos-container">
           {photoImages}
         </section>
