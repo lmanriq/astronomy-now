@@ -26,6 +26,10 @@
   text-align: center;
 }
 
+.photo-explanation {
+  margin: 1em 5em;
+}
+
 .rover-photo {
   width: 10em;
   margin: 0.5em auto;

@@ -25,8 +25,11 @@ class PhotoPage extends Component {
   }
 
   render() {
-    const { photoOfTheDay } = this.props;
+    const { photoOfTheDay, roverPhotos } = this.props;
     const { title, url, hdurl, explanation, date, copyright } = photoOfTheDay;
+    const photoImages = roverPhotos.map((photo, index) => (
+      <img className="rover-photo" src={photo.img_src} alt="From the Curiosity rover" key={index}/>
+    ))
     return (
       <section className="photo-page main-page flex-container">
         <h1>{moment(date).format('ll')}</h1>
@@ -40,9 +43,13 @@ class PhotoPage extends Component {
           </article>
           <article className="details-container">
             <h2>{title}</h2>
-            <p>{explanation}</p>
+            <p className="photo-explanation">{explanation}</p>
             <p>© {copyright}</p>
           </article>
+        </section>
+        <h1>Mars Curiosity Rover Photos (Today and Yesterday)</h1>
+        <section className="rover-photos-container">
+          {photoImages}
         </section>
       </section>
     );
