@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./PhotoPage.css";
 import { connect } from "react-redux";
-import { loadPhotoOfTheDay } from "../../actions";
+import { loadPhotoOfTheDay, loadRoverPhotos } from "../../actions";
 import PropTypes from 'prop-types';
 import { fetchPOTD, fetchRoverPhotos } from "../../utils/apiCalls";
 
@@ -16,7 +16,7 @@ class PhotoPage extends Component {
       const yesterday = moment(today).subtract(1, 'days').format("YYYY-MM-DD");
       const roverDataToday = await fetchRoverPhotos(today);
       const roverDataYesterday = await fetchRoverPhotos(yesterday);
-      console.log([...roverDataYesterday.photos, ...roverDataToday.photos])
+      this.props.loadRoverPhotos([...roverDataYesterday.photos, ...roverDataToday.photos])
       this.props.loadPhotoOfTheDay(potdData);      
     }
     catch(error) {
@@ -50,11 +50,13 @@ class PhotoPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  photoOfTheDay: state.photoOfTheDay
+  photoOfTheDay: state.photoOfTheDay,
+  roverPhotos: state.roverPhotos
 });
 
 const mapDispatchToProps = dispatch => ({
-  loadPhotoOfTheDay: photo => dispatch(loadPhotoOfTheDay(photo))
+  loadPhotoOfTheDay: photo => dispatch(loadPhotoOfTheDay(photo)),
+  loadRoverPhotos: photos => dispatch(loadRoverPhotos(photos))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoPage);
