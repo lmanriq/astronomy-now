@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { loadPhotoOfTheDay, loadRoverPhotos } from "../../actions";
 import PropTypes from 'prop-types';
 import { fetchPOTD, fetchRoverPhotos } from "../../utils/apiCalls";
+import PhotoCard from "../PhotoCard/PhotoCard";
 
 const moment = require('moment');
 moment().format();
@@ -16,7 +17,7 @@ class PhotoPage extends Component {
       const yesterday = moment(today).subtract(1, 'days').format("YYYY-MM-DD");
       const roverDataToday = await fetchRoverPhotos(today);
       const roverDataYesterday = await fetchRoverPhotos(yesterday);
-      this.props.loadRoverPhotos([...roverDataYesterday.photos, ...roverDataToday.photos])
+      this.props.loadRoverPhotos([...roverDataToday.photos, ...roverDataYesterday.photos])
       this.props.loadPhotoOfTheDay(potdData);      
     }
     catch(error) {
@@ -28,7 +29,10 @@ class PhotoPage extends Component {
     const { photoOfTheDay, roverPhotos } = this.props;
     const { title, url, hdurl, explanation, date, copyright } = photoOfTheDay;
     const photoImages = roverPhotos.map((photo, index) => (
-      <img className="rover-photo" src={photo.img_src} alt="From the Curiosity rover" key={index}/>
+      <PhotoCard 
+        image={photo.img_src}
+        key={index}
+      />
     ))
     return (
       <section className="photo-page main-page flex-container">
