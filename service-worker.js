@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/astronomy-now/precache-manifest.8657634bc808b5b32afb97f5f13dc8b0.js"
+  "/astronomy-now/precache-manifest.d83668cdf3304941f73680f995b06f8b.js"
 );
 
 self.addEventListener('message', (event) => {
