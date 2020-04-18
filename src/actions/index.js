@@ -55,3 +55,8 @@ export const showError = error => ({
 export const removeError = () => ({
   type: 'REMOVE_ERROR'
 })
+
+export const loadRoverPhotos = photos => ({
+  type: 'LOAD_ROVER_PHOTOS',
+  photos
+})
