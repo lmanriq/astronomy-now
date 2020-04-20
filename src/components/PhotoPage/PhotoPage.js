@@ -15,13 +15,23 @@ class PhotoPage extends Component {
       const potdData = await fetchPOTD();
       const today = moment().format("YYYY-MM-DD");
       const yesterday = moment(today)
+        .subtract(1, "days")
+        .format("YYYY-MM-DD");
+      const dayBefore = moment(today)
         .subtract(2, "days")
+        .format("YYYY-MM-DD");
+      const dayBefore2 = moment(today)
+        .subtract(3, "days")
         .format("YYYY-MM-DD");
       const roverDataToday = await fetchRoverPhotos(today);
       const roverDataYesterday = await fetchRoverPhotos(yesterday);
+      const roverDataDayBefore = await fetchRoverPhotos(dayBefore);
+      const roverDataDayBefore2 = await fetchRoverPhotos(dayBefore2);
       this.props.loadRoverPhotos([
         ...roverDataToday.photos,
-        ...roverDataYesterday.photos
+        ...roverDataYesterday.photos,
+        ...roverDataDayBefore.photos,
+        ...roverDataDayBefore2.photos
       ]);
       this.props.loadPhotoOfTheDay(potdData);
     } catch (error) {
@@ -57,7 +67,7 @@ class PhotoPage extends Component {
             <p>© {copyright}</p>
           </article>
         </section>
-        <h1>Mars Curiosity Rover Photos (Today and Yesterday)</h1>
+        <h1>Most Recent Mars Curiosity Rover Photos</h1>
         <p>click to expand</p>
         {!roverPhotos.length && (
           <h2>
