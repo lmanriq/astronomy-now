@@ -187,4 +187,40 @@ describe("App", () => {
     // expect(getByTestId("close-image-btn")).toBeInTheDocument();
   });
 
+  it("should go to the login page when you click the login button", () => {
+    const store = createStore(rootReducer);
+    const { getByText } = render(
+      <Provider store={store}>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
+    );
+    const loginBtn = getByText("login");
+    expect(loginBtn).toBeInTheDocument();
+    fireEvent.click(loginBtn);
+    expect(
+      getByText("Stay in the orbit of what’s happening today in space")
+    ).toBeInTheDocument();
+  });
+
+  it("should be able to log in", () => {
+    const store = createStore(rootReducer);
+    const { getByText, getByPlaceholderText } = render(
+      <Provider store={store}>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
+    );
+    const loginBtn = getByText("login");
+    expect(loginBtn).toBeInTheDocument();
+    fireEvent.click(loginBtn);
+    expect(
+      getByText("Stay in the orbit of what’s happening today in space")
+    ).toBeInTheDocument();
+    const nameInput = getByPlaceholderText("your name");
+    const emailInput = getByPlaceholderText("email");
+    fireEvent.change()
+  });
 });
