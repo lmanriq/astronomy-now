@@ -42,7 +42,7 @@ const FavoritesPage = props => {
       <div className="news-container">
         {!!favorites.length && newsCards}
       </div>
-      {photoCards.length > 0 && <h3>Your favorite photos</h3>}
+      {photoCards.length > 0 && <h3>Your favorite photos (click to expand)</h3>}
       <div className="rover-photos-container">
         {!!favorites.length && photoCards}
       </div>
