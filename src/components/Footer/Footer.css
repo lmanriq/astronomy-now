@@ -1,4 +1,5 @@
 footer {
   height: 8vh;
   text-align: center;
+  justify-content: space-around;
 }

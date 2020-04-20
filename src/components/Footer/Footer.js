@@ -1,8 +1,9 @@
 import React from "react";
+import "./Footer.css"
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="flex-container">
       <p>Created by Lili Manrique</p>
       <div>
         Icons made by{" "}
