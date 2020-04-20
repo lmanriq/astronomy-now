@@ -3,11 +3,13 @@
 }
 
 .photo-page h1,
+.photo-page h2,
 .photo-page p {
   text-align: center;
 }
 
-.photo-page h1 {
+.photo-page h1,
+.photo-page h2 {
   margin: 0.5em;
 }
 
