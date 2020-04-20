@@ -8,8 +8,8 @@ describe('isLoading', () => {
   })
   it('when receiving SHOW_ERROR action, it should return the error string', () => {
     const sampleAction = {
-      type: "IS_LOADING",
-      isLoading: true
+      type: "UPDATE_LOADING",
+      loading: true
     }
     const result = isLoading(false, sampleAction);
     expect(result).toEqual(true);

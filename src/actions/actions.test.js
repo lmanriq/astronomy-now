@@ -253,12 +253,12 @@ describe("Action Creators", () => {
     expect(result).toEqual(expectedAction);
   });
 
-  it("should have a type of IS_LOADING and return the updated boolean", () => {
+  it("should have a type of UPDATE_LOADING and return the updated boolean", () => {
     const expectedAction = {
-      type: "IS_LOADING",
-      isLoading: true
+      type: "UPDATE_LOADING",
+      loading: true
     }
-    const result = actions.isLoading(true);
+    const result = actions.updateLoading(true);
     expect(result).toEqual(expectedAction);
   })
 });
