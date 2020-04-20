@@ -7,7 +7,7 @@ describe("passovers", () => {
     expect(result).toEqual(expectedResult);
   });
 
-  it("when receiving ADD_FAVORITE action, it should return the updated array", () => {
+  it("when receiving LOAD_PEOPLE action, it should return the updated object", () => {
     const mockPassover = {
       message: "success",
       request: {

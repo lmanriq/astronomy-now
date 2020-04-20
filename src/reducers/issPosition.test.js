@@ -7,7 +7,7 @@ describe("issPosition", () => {
     expect(result).toEqual(expectedResult);
   });
 
-  it("when receiving ADD_FAVORITE action, it should return the updated array", () => {
+  it("when receiving UPDATE_ISS_POSITION action, it should return the updated array", () => {
     const mockPosition = {
       message: "success",
       iss_position: {

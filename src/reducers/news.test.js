@@ -7,7 +7,7 @@ describe("news", () => {
     expect(result).toEqual(expectedResult);
   });
 
-  it("when receiving ADD_FAVORITE action, it should return the updated array", () => {
+  it("when receiving LOAD_NEWS action, it should return the updated array", () => {
     const mockNews = [
       {
         news_id: "2020-14",
