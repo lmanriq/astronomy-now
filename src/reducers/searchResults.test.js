@@ -2,8 +2,8 @@ import { searchResults } from './searchResults';
 
 describe('searchResults', () => {
   it("should return the initial state", () => {
-    const expectedResult = [];
-    const result = searchResults(undefined, ["passover"]);
+    const expectedResult = {};
+    const result = searchResults(undefined, {results: "results"});
     expect(result).toEqual(expectedResult);
   });
 
@@ -42,9 +42,9 @@ describe('searchResults', () => {
     };
     const sampleAction = {
       type: "LOAD_RESULTS",
-      results: mockPassover.response
+      results: mockPassover
     };
-    const result = searchResults([], sampleAction);
-    expect(result).toEqual(mockPassover.response);
+    const result = searchResults({}, sampleAction);
+    expect(result).toEqual(mockPassover);
   });
 })
