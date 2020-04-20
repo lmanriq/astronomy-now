@@ -13,6 +13,7 @@ const NewsCard = props => {
   const favBtn = (
     <button onClick={() => addFavorite(id)}>
       <img
+        data-testid={`news-${id}`}
         className="heart-icon"
         src="/astronomy-now/images/empty-heart.svg"
         alt="empty heart icon"
@@ -22,6 +23,7 @@ const NewsCard = props => {
   const unFavBtn = (
     <button onClick={() => removeFavorite(id)}>
       <img
+        data-testid={`news-${id}`}
         className="heart-icon"
         src="/astronomy-now/images/full-heart.svg"
         alt="full heart icon"
