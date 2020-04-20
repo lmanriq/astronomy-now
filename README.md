@@ -23,13 +23,13 @@ External APIs
 
 ## Screenshots
 
-![Photo of the Day 1](/astronomy-now/images/AN-potd.png)
-![Photo of the Day 2](/astronomy-now/images/AN-potd-2.png)
-![Photo of the Day 3](/astronomy-now/images/AN-potd-3.png)
-![ISS tracking](/astronomy-now/images/AN-ISS.png)
-![News](/astronomy-now/images/AN-news.png)
-![Login](/astronomy-now/images/AN-login.png)
-![Favorites](/astronomy-now/images/AN-favorites.png)
+![Photo of the Day 1](images/AN-potd.png)
+![Photo of the Day 2](images/AN-potd-2.png)
+![Photo of the Day 3](images/AN-potd-3.png)
+![ISS tracking](images/AN-ISS.png)
+![News](images/AN-news.png)
+![Login](images/AN-login.png)
+![Favorites](images/AN-favorites.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
