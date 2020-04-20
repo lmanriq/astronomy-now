@@ -266,8 +266,12 @@ describe("Photo Page", () => {
       </Provider>
     );
 
-    expect(getByText("NASA's Astronomy Photo of The Day")).toBeInTheDocument();
-    expect(getByText("Click to download HD Image")).toBeInTheDocument();
+    expect(
+      await waitForElement(() => getByText("NASA's Astronomy Photo of The Day"))
+    ).toBeInTheDocument();
+    expect(
+      await waitForElement(() => getByText("Click to download HD Image"))
+    ).toBeInTheDocument();
     expect(
       await waitForElement(() => getByText("Apr 17, 2020"))
     ).toBeInTheDocument();
