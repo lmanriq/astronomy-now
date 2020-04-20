@@ -91,3 +91,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoCard);
+
+PhotoCard.propTypes = {
+  favorites: PropTypes.array,
+  image: PropTypes.string,
+  id: PropTypes.number,
+  testid: PropTypes.number,
+  addFavorite: PropTypes.func,
+  removeFavorite: PropTypes.func
+};
