@@ -4,13 +4,14 @@ import { connect } from "react-redux";
 import {
   loadPhotoOfTheDay,
   loadRoverPhotos,
-  updateLoading
+  updateLoading,
+  showError,
+  removeError
 } from "../../actions";
 import PropTypes from "prop-types";
 import { fetchPOTD, fetchRoverPhotos } from "../../utils/apiCalls";
 import PhotoCard from "../PhotoCard/PhotoCard";
 import LoadingPage from "../LoadingPage/LoadingPage";
-
 
 const moment = require("moment");
 moment().format();
@@ -43,13 +44,13 @@ class PhotoPage extends Component {
       this.props.loadPhotoOfTheDay(potdData);
       this.props.updateLoading(false);
     } catch (error) {
-      console.error(error.message);
+      this.props.showError(error.message);
       this.props.updateLoading(false);
     }
   }
 
   render() {
-    const { photoOfTheDay, roverPhotos, isLoading } = this.props;
+    const { photoOfTheDay, roverPhotos, isLoading, error } = this.props;
     const { title, url, hdurl, explanation, date, copyright } = photoOfTheDay;
     const photoImages = roverPhotos.map((photo, index) => (
       <PhotoCard
@@ -61,14 +62,13 @@ class PhotoPage extends Component {
     ));
 
     if (isLoading) {
-      return (
-        <LoadingPage />
-      );
+      return <LoadingPage />;
     } else {
       return (
         <section className="photo-page main-page flex-container">
           <h1>{date && moment(date).format("ll")}</h1>
           <h1>NASA's Astronomy Photo of The Day</h1>
+          {error && <h3>{error}</h3>}
           <section>
             <article className="image-container flex-container">
               <img src={url} alt={title} />
@@ -105,18 +105,24 @@ class PhotoPage extends Component {
 const mapStateToProps = state => ({
   photoOfTheDay: state.photoOfTheDay,
   roverPhotos: state.roverPhotos,
-  isLoading: state.isLoading
+  isLoading: state.isLoading,
+  error: state.error
 });
 
 const mapDispatchToProps = dispatch => ({
   loadPhotoOfTheDay: photo => dispatch(loadPhotoOfTheDay(photo)),
   loadRoverPhotos: photos => dispatch(loadRoverPhotos(photos)),
+  showError: error => dispatch(showError(error)),
   updateLoading: loading => dispatch(updateLoading(loading))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoPage);
 
 PhotoPage.propTypes = {
+  error: PropTypes.string,
+  showError: PropTypes.func,
   photoOfTheDay: PropTypes.object,
-  loadPhotoOfTheDay: PropTypes.func
+  loadPhotoOfTheDay: PropTypes.func,
+  isLoading: PropTypes.bool,
+  updateLoading: PropTypes.func
 };
