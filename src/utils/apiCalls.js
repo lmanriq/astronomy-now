@@ -21,13 +21,13 @@ export const fetchPasstimes = async (lat, lon) => {
 };
 
 export const fetchPosition = async () => {
-  const nowResponse = await fetch(ISS_BASE + ISS_NOW_ENDPOINT);
+  const nowResponse = await fetch(PROXY_URL + ISS_BASE + ISS_NOW_ENDPOINT);
   const nowData = await nowResponse.json();
   return nowData;
 };
 
 export const fetchPeopleData = async () => {
-  const peopleResponse = await fetch(ISS_BASE + ISS_PEOPLE_ENDPOINT);
+  const peopleResponse = await fetch(PROXY_URL + ISS_BASE + ISS_PEOPLE_ENDPOINT);
   const peopleData = await peopleResponse.json();
   return peopleData;
 };
