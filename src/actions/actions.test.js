@@ -257,8 +257,8 @@ describe("Action Creators", () => {
     const expectedAction = {
       type: "UPDATE_LOADING",
       loading: true
-    }
+    };
     const result = actions.updateLoading(true);
     expect(result).toEqual(expectedAction);
-  })
+  });
 });

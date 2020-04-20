@@ -111,8 +111,11 @@ class IssForm extends Component {
           {error && <h4>{error}</h4>}
           {searchResults.request && (
             <h4>
-              The ISS will be over {searchResults.request.latitude} {searchResults.request.latitude > 0 ? "N" : "S"},{" "}
-              {searchResults.request.longitude} {searchResults.request.longitude > 0 ? "E" : "W"} at the following times:
+              The ISS will be over {searchResults.request.latitude}{" "}
+              {searchResults.request.latitude > 0 ? "N" : "S"},{" "}
+              {searchResults.request.longitude}{" "}
+              {searchResults.request.longitude > 0 ? "E" : "W"} at the following
+              times:
             </h4>
           )}
           <ul>{!error && resultsList}</ul>
@@ -142,5 +145,7 @@ IssForm.propTypes = {
   error: PropTypes.string,
   loadSearchResults: PropTypes.func,
   showError: PropTypes.func,
-  removeError: PropTypes.func
+  removeError: PropTypes.func,
+  isLoading: PropTypes.bool, 
+  updateLoading: PropTypes.func
 };
