@@ -33,7 +33,7 @@ class PhotoPage extends Component {
     const { photoOfTheDay, roverPhotos } = this.props;
     const { title, url, hdurl, explanation, date, copyright } = photoOfTheDay;
     const photoImages = roverPhotos.map((photo, index) => (
-      <PhotoCard image={photo.img_src} key={index} data-testid={photo.id} />
+      <PhotoCard image={photo.img_src} key={index} testid={photo.id} />
     ));
     console.log(date);
     return (
