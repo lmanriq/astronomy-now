@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "87c21cd843cd3cdc92eff09d35e6c31c",
+    "revision": "b22f566524ea4123e087616208dd7e07",
     "url": "/astronomy-now/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/astronomy-now/static/css/2.7c35e809.chunk.css"
   },
   {
-    "revision": "4370344a7cf0f4525a73",
+    "revision": "1f70e39b944c1326b9f6",
     "url": "/astronomy-now/static/css/main.af2ec0f2.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/astronomy-now/static/js/2.9c681987.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4370344a7cf0f4525a73",
-    "url": "/astronomy-now/static/js/main.56843053.chunk.js"
+    "revision": "1f70e39b944c1326b9f6",
+    "url": "/astronomy-now/static/js/main.e9a93680.chunk.js"
   },
   {
     "revision": "6484726d2deefb8272c4",
