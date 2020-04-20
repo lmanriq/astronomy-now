@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./IssPage.css";
-import { updateISSPosition, loadPeople, updateLoading } from "../../actions";
+import { updateISSPosition, loadPeople, updateLoading, showError } from "../../actions";
 import { connect } from "react-redux";
 import IssMap from "../IssMap/IssMap";
 import IssForm from "../IssForm/IssForm";
@@ -23,12 +23,12 @@ class IssPage extends Component {
       this.props.updateLoading(false);
     } catch (error) {
       this.props.updateLoading(false);
-      console.error(error.message);
+      this.props.showError(error.message);
     }
   }
 
   render() {
-    const { issPosition, peopleData, isLoading } = this.props;
+    const { issPosition, peopleData, isLoading, error } = this.props;
     const { latitude, longitude } = issPosition;
     const peopleList = peopleData.people
       ? peopleData.people.map((person, index) => (
@@ -37,8 +37,8 @@ class IssPage extends Component {
           </li>
         ))
       : "loading...";
-    if(isLoading) {
-      return <LoadingPage />
+    if (isLoading) {
+      return <LoadingPage />;
     } else {
       return (
         <section className="iss-page main-page flex-container">
@@ -47,6 +47,7 @@ class IssPage extends Component {
           </div>
           <div className="iss-form-container flex-container">
             <h1>International Space Station Tracking</h1>
+            {error && <h3>{error}</h3>}
             <p>
               The ISS is currently over {latitude} {latitude > 0 ? "N" : "S"},{" "}
               {longitude} {longitude > 0 ? "E" : "W"}
@@ -64,20 +65,26 @@ class IssPage extends Component {
 const mapStateToProps = state => ({
   issPosition: state.issPosition,
   peopleData: state.peopleData,
-  isLoading: state.isLoading
+  isLoading: state.isLoading,
+  error: state.error
 });
 
 const mapDispatchToProps = dispatch => ({
   updateISSPosition: position => dispatch(updateISSPosition(position)),
   loadPeople: peopleData => dispatch(loadPeople(peopleData)),
-  updateLoading: loading => dispatch(updateLoading(loading))
+  updateLoading: loading => dispatch(updateLoading(loading)),
+  showError: error => dispatch(showError(error))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(IssPage);
 
 IssPage.propTypes = {
+  error: PropTypes.string,
+  showError: PropTypes.func,
   issPosition: PropTypes.object,
   peopleData: PropTypes.object,
   updateISSPosition: PropTypes.func,
-  loadPeople: PropTypes.func
+  loadPeople: PropTypes.func,
+  isLoading: PropTypes.bool,
+  updateLoading: PropTypes.func
 };
