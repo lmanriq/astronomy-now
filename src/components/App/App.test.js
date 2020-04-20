@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "../../reducers";
 import Modal from "react-modal";
-import { fetchPOTD, fetchRoverPhotos } from "../../utils/apiCalls";
+import { fetchPOTD, fetchRoverPhotos, fetchPosition, fetchPeopleData } from "../../utils/apiCalls";
 jest.mock("../../utils/apiCalls");
 Modal.setAppElement(document.createElement("div"));
 
@@ -213,14 +213,17 @@ describe("App", () => {
         </Router>
       </Provider>
     );
-    const loginBtn = getByText("login");
-    expect(loginBtn).toBeInTheDocument();
-    fireEvent.click(loginBtn);
-    expect(
-      getByText("Stay in the orbit of what’s happening today in space")
-    ).toBeInTheDocument();
-    const nameInput = getByPlaceholderText("your name");
-    const emailInput = getByPlaceholderText("email");
-    fireEvent.change()
+    // const loginBtn = getByText("login");
+    // expect(loginBtn).toBeInTheDocument();
+    // fireEvent.click(loginBtn);
+    // expect(
+    //   getByText("Stay in the orbit of what’s happening today in space")
+    // ).toBeInTheDocument();
+    const nameInput = getByPlaceholderText('your name');
+    const emailInput = getByPlaceholderText('email');
+    fireEvent.change(nameInput, {target: {value: 'Lili'}});
+    fireEvent.change(emailInput, {target: {value: 'lili@gmail.com'}});
+    fireEvent.click(getByText("login"));
+    expect(getByText('Welcome, Lili')).toBeInTheDocument();
   });
 });
