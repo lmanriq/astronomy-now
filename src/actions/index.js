@@ -55,3 +55,8 @@ export const loadRoverPhotos = photos => ({
   type: "LOAD_ROVER_PHOTOS",
   photos
 });
+
+export const isLoading = isLoading => ({
+  type: "IS_LOADING",
+  isLoading
+});

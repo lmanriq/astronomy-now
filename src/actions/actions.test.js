@@ -252,4 +252,13 @@ describe("Action Creators", () => {
     const result = actions.loadRoverPhotos(mockRover);
     expect(result).toEqual(expectedAction);
   });
+
+  it("should have a type of IS_LOADING and return the updated boolean", () => {
+    const expectedAction = {
+      type: "IS_LOADING",
+      isLoading: true
+    }
+    const result = actions.isLoading(true);
+    expect(result).toEqual(expectedAction);
+  })
 });
