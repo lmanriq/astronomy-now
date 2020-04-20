@@ -5,7 +5,6 @@ import { news } from './news';
 import { favorites } from './favorites';
 import { issPosition } from './issPosition';
 import { peopleData } from './peopleData';
-import { passovers } from './passovers';
 import { searchResults } from './searchResults';
 import { error } from './error';
 import { roverPhotos } from './roverPhotos';
@@ -18,7 +17,6 @@ const rootReducer = combineReducers({
   favorites,
   issPosition,
   peopleData,
-  passovers,
   searchResults,
   error,
   roverPhotos

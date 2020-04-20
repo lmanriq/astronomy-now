@@ -23,14 +23,14 @@ class PhotoCard extends Component {
 
   render () {
     return (
-      <button className="rover-photo-container"> 
+      <button className="rover-photo-container" data-testid={this.props.testid}> 
         <img className="rover-photo" src={this.props.image} onClick={this.handleOpenModal} alt="from the curiosity rover" />
         <Modal 
            isOpen={this.state.showModal}
            contentLabel="expanded photo"
         >
-          <button onClick={this.handleCloseModal}>x</button>
-          <img className="expanded-rover-photo" src={this.props.image} alt="from the curiosity rover" />
+          <button data-testid="close-image-btn" onClick={this.handleCloseModal}>x</button>
+          <img className="expanded-rover-photo" src={this.props.image} alt="from the curiosity rover - expanded" />
         </Modal>
       </button>
     );
