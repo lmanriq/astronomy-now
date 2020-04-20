@@ -15,7 +15,7 @@ class PhotoPage extends Component {
       const potdData = await fetchPOTD();
       const today = moment().format("YYYY-MM-DD");
       const yesterday = moment(today)
-        .subtract(1, "days")
+        .subtract(2, "days")
         .format("YYYY-MM-DD");
       const roverDataToday = await fetchRoverPhotos(today);
       const roverDataYesterday = await fetchRoverPhotos(yesterday);
@@ -35,7 +35,6 @@ class PhotoPage extends Component {
     const photoImages = roverPhotos.map((photo, index) => (
       <PhotoCard image={photo.img_src} key={index} testid={photo.id} />
     ));
-    console.log(date);
     return (
       <section className="photo-page main-page flex-container">
         <h1>{date && moment(date).format("ll")}</h1>
