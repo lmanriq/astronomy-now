@@ -23,13 +23,13 @@ External APIs
 
 ## Screenshots
 
-![Photo of the Day 1](images/AN-potd.png)
-![Photo of the Day 2](images/AN-potd-2.png)
-![Photo of the Day 3](images/AN-potd-3.png)
-![ISS tracking](images/AN-ISS.png)
-![News](images/AN-news.png)
-![Login](images/AN-login.png)
-![Favorites](images/AN-favorites.png)
+![Photo of the Day 1](./public/images/AN-potd.png)
+![Photo of the Day 2](./public/images/AN-potd-2.png)
+![Photo of the Day 3](./public/images/AN-potd-3.png)
+![ISS tracking](./public/images/AN-ISS.png)
+![News](./public/images/AN-news.png)
+![Login](./public/images/AN-login.png)
+![Favorites](./public/images/AN-favorites.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
