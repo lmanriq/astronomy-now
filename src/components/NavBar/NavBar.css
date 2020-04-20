@@ -45,7 +45,7 @@ nav {
 
 .nav-btn-container button:hover,
 .active .nav-btn-container button {
-  background: url('/images/neptune-active.svg') no-repeat center center;
+  background: url('/astronomy-now/images/neptune-active.svg') no-repeat center center;
   background-size: auto 100%;
 }
 
@@ -53,7 +53,7 @@ nav {
   height: 8em;
   width: 8em;
   border: none;
-  background: url('/images/neptune.svg') no-repeat center center;
+  background: url('/astronomy-now/images/neptune.svg') no-repeat center center;
   background-size: auto 100%;
   font-size: 0.7em;
   font-weight: 800;

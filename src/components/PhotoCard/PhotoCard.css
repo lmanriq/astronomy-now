@@ -1,0 +1,34 @@
+.rover-photo-container {
+  margin: 0.5em auto;
+  background-color: #fff;
+}
+
+.rover-photo {
+  width: 12em;
+  height: 12em;
+  cursor: pointer;
+}
+
+.rover-photo:hover {
+  border: 2px solid #F77759;
+}
+
+.expanded-rover-photo {
+  height: 100%;
+  width: auto;
+  margin: auto;
+}
+
+.ReactModal__Content {
+  margin: 10em 10em 2em 10em;
+  display: flex;
+  position: relative;
+}
+
+.ReactModal__Content button {
+  font-size: 1.2em;
+  height: 1.8em;
+  width: 1.8em;
+  border-radius: 100%;
+  position: absolute;
+}

@@ -2,8 +2,15 @@
   flex-direction: column;
 }
 
-.photo-page h1 {
+.photo-page h1,
+.photo-page h2,
+.photo-page p {
   text-align: center;
+}
+
+.photo-page h1,
+.photo-page h2 {
+  margin: 0.5em;
 }
 
 .image-container,
@@ -18,10 +25,18 @@
 }
 
 .image-container img {
-  height: 60vh;
-  width: auto;
+  width: 80%;
 }
 
 .details-container {
   text-align: center;
+}
+
+.photo-explanation {
+  margin: 0 5em;
+}
+
+.rover-photos-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr)
 }

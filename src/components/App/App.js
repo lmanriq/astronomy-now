@@ -7,6 +7,9 @@ import NewsPage from "../NewsPage/NewsPage";
 import FavoritesPage from "../FavoritesPage/FavoritesPage";
 import IssPage from "../IssPage/IssPage";
 import { Route } from "react-router-dom";
+import Modal from 'react-modal';
+
+if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 function App() {
   return (
