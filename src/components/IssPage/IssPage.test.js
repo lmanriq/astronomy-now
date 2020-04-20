@@ -50,7 +50,9 @@ describe("ISS Page", () => {
     );
 
     expect(
-      getByText("International Space Station Tracking")
+      await waitForElement(() =>
+        getByText("International Space Station Tracking")
+      )
     ).toBeInTheDocument();
     const currentLocation = await waitForElement(() =>
       getByText("The ISS is currently over 10.6716 N, -61.6754 W")

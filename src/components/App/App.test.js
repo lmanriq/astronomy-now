@@ -382,7 +382,7 @@ const mockDetailedData = [
 ];
 
 describe("App", () => {
-  it("Should render the photo page on load", () => {
+  it("Should render the photo page on load", async () => {
     fetchPOTD.mockResolvedValueOnce(mockPOTD);
     fetchRoverPhotos.mockResolvedValueOnce(mockTodayRover);
     fetchRoverPhotos.mockResolvedValueOnce(mockYesterdayRover);
@@ -396,7 +396,9 @@ describe("App", () => {
         </Router>
       </Provider>
     );
-    expect(getByText("NASA's Astronomy Photo of The Day")).toBeInTheDocument();
+    expect(
+      await waitForElement(() => getByText("NASA's Astronomy Photo of The Day"))
+    ).toBeInTheDocument();
   });
 
   it("Should expand a rover photo when clicked on", async () => {
@@ -491,7 +493,7 @@ describe("App", () => {
     expect(getByText("Welcome, Lili")).toBeInTheDocument();
   });
 
-  it("should be able to navigate to the ISS page", () => {
+  it("should be able to navigate to the ISS page", async () => {
     fetchPOTD.mockResolvedValueOnce(mockPOTD);
     fetchRoverPhotos.mockResolvedValueOnce(mockTodayRover);
     fetchRoverPhotos.mockResolvedValueOnce(mockYesterdayRover);
@@ -513,7 +515,9 @@ describe("App", () => {
     const issBtn = getByText("ISS Tracking");
     fireEvent.click(issBtn);
     expect(
-      getByText("International Space Station Tracking")
+      await waitForElement(() =>
+        getByText("International Space Station Tracking")
+      )
     ).toBeInTheDocument();
 
     fetchPOTD.mockResolvedValueOnce(mockPOTD);
@@ -525,7 +529,7 @@ describe("App", () => {
     fireEvent.click(getByText("Photos of the Day"));
   });
 
-  it("should be able to navigate to the Hubble News page", () => {
+  it("should be able to navigate to the Hubble News page", async () => {
     fetchPOTD.mockResolvedValueOnce(mockPOTD);
     fetchRoverPhotos.mockResolvedValueOnce(mockTodayRover);
     fetchRoverPhotos.mockResolvedValueOnce(mockYesterdayRover);
@@ -546,7 +550,9 @@ describe("App", () => {
     const hubbleBtn = getByText("Hubble News");
     fireEvent.click(hubbleBtn);
     expect(
-      getByText("News from the Hubble Space Telescope")
+      await waitForElement(() =>
+        getByText("News from the Hubble Space Telescope")
+      )
     ).toBeInTheDocument();
   });
 
