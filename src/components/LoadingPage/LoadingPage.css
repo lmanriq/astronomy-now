@@ -1,0 +1,10 @@
+.loading-page {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2em;
+}
+
+.loading-page img {
+  border-radius: 100%;
+}
