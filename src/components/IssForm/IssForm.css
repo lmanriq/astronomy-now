@@ -18,6 +18,10 @@
   margin-top: 1em;
 }
 
+.search-results {
+  padding: 1em;
+}
+
 .search-results ul,
 .search-results h4 {
   text-align: center;
