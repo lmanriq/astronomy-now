@@ -226,4 +226,50 @@ describe("App", () => {
     fireEvent.click(getByText("login"));
     expect(getByText('Welcome, Lili')).toBeInTheDocument();
   });
+
+  it("should be able to navigate to the ISS page", () => {
+    const store = createStore(rootReducer);
+    const { getByText } = render(
+      <Provider store={store}>
+        <Router>
+          <App />
+        </Router>
+      </Provider>
+    );
+        const mockPosition = {
+      message: "success",
+      iss_position: {
+        longitude: "-61.6754",
+        latitude: "10.6716"
+      },
+      timestamp: 1587156872
+    };
+    const mockPeopleData = {
+      number: 3,
+      message: "success",
+      people: [
+        {
+          craft: "ISS",
+          name: "Chris Cassidy"
+        },
+        {
+          craft: "ISS",
+          name: "Anatoly Ivanishin"
+        },
+        {
+          craft: "ISS",
+          name: "Ivan Vagner"
+        }
+      ]
+    };
+
+    fetchPosition.mockResolvedValue(mockPosition);
+    fetchPeopleData.mockResolvedValueOnce(mockPeopleData);
+
+    const issBtn = getByText('ISS Tracking');
+    fireEvent.click(issBtn);
+    expect(
+      getByText("International Space Station Tracking")
+    ).toBeInTheDocument();
+  });
 });
