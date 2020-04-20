@@ -7,7 +7,6 @@ const FavoritesPage = (props) => {
   const { favorites, news } = props;
   const favoriteStories = news.filter(story => favorites.includes(story.news_id))
   const newsCards = favoriteStories.map(story => {
-    console.log(story)
     return (
       <NewsCard
         key={story.news_id}
