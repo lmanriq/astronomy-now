@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { loadNews, updateLoading } from "../../actions";
+import { loadNews, updateLoading, showError } from "../../actions";
 import NewsCard from "../NewsCard/NewsCard";
 import LoadingPage from "../LoadingPage/LoadingPage";
 import "./NewsPage.css";
@@ -18,12 +18,12 @@ class NewsPage extends Component {
       this.props.updateLoading(false);
     } catch (error) {
       this.props.updateLoading(false);
-      console.error(error.message);
+      this.props.showError(error.message);
     }
   }
 
   render() {
-    const { news, isLoading } = this.props;
+    const { news, isLoading, error } = this.props;
     const newsCards = news.map(story => {
       return (
         <NewsCard
@@ -43,6 +43,7 @@ class NewsPage extends Component {
       return (
         <section className="news-page main-page flex-container">
           <h1>News from the Hubble Space Telescope</h1>
+          {error && <h3>{error}</h3>}
           <div className="news-container">{newsCards}</div>
         </section>
       );
@@ -52,17 +53,23 @@ class NewsPage extends Component {
 
 const mapStateToProps = state => ({
   news: state.news,
-  isLoading: state.isLoading
+  isLoading: state.isLoading,
+  error: state.error
 });
 
 const mapDispatchToProps = dispatch => ({
   loadNews: news => dispatch(loadNews(news)),
-  updateLoading: loading => dispatch(updateLoading(loading))
+  updateLoading: loading => dispatch(updateLoading(loading)),
+  showError: error => dispatch(showError(error))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsPage);
 
 NewsPage.propTypes = {
   new: PropTypes.array,
-  loadNews: PropTypes.func
+  loadNews: PropTypes.func,
+  error: PropTypes.string,
+  showError: PropTypes.func,
+  isLoading: PropTypes.bool,
+  updateLoading: PropTypes.func
 };
