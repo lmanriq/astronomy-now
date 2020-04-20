@@ -4,7 +4,7 @@ import Modal from "react-modal";
 import "./PhotoCard.css";
 import { connect } from "react-redux";
 import { addFavorite, removeFavorite } from "../../actions";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 class PhotoCard extends Component {
   constructor() {
@@ -25,7 +25,14 @@ class PhotoCard extends Component {
   }
 
   render() {
-    const { id, image, testid, favorites, addFavorite, removeFavorite } = this.props;
+    const {
+      id,
+      image,
+      testid,
+      favorites,
+      addFavorite,
+      removeFavorite
+    } = this.props;
     const favBtn = (
       <button onClick={() => addFavorite(id)}>
         <img

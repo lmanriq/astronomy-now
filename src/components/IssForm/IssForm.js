@@ -146,6 +146,6 @@ IssForm.propTypes = {
   loadSearchResults: PropTypes.func,
   showError: PropTypes.func,
   removeError: PropTypes.func,
-  isLoading: PropTypes.bool, 
+  isLoading: PropTypes.bool,
   updateLoading: PropTypes.func
 };

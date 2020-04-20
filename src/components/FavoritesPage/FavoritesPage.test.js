@@ -17,6 +17,8 @@ describe("Favorites Page", () => {
       </Provider>
     );
     expect(getByText("Your Favorites")).toBeInTheDocument();
-    expect(getByText("You have no favorited articles or photos yet!")).toBeInTheDocument();
+    expect(
+      getByText("You have no favorited articles or photos yet!")
+    ).toBeInTheDocument();
   });
 });

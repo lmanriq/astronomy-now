@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import "./IssPage.css";
-import { updateISSPosition, loadPeople, updateLoading, showError } from "../../actions";
+import {
+  updateISSPosition,
+  loadPeople,
+  updateLoading,
+  showError
+} from "../../actions";
 import { connect } from "react-redux";
 import IssMap from "../IssMap/IssMap";
 import IssForm from "../IssForm/IssForm";

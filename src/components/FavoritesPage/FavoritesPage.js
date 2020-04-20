@@ -9,7 +9,9 @@ const FavoritesPage = props => {
   const favoriteStories = news.filter(story =>
     favorites.includes(story.news_id)
   );
-  const favoritePhotos = roverPhotos.filter(photo => favorites.includes(photo.id));
+  const favoritePhotos = roverPhotos.filter(photo =>
+    favorites.includes(photo.id)
+  );
   const newsCards = favoriteStories.map(story => {
     return (
       <NewsCard
@@ -39,9 +41,7 @@ const FavoritesPage = props => {
         <h2>You have no favorited articles or photos yet!</h2>
       )}
       {newsCards.length > 0 && <h3>Your favorite articles</h3>}
-      <div className="news-container">
-        {!!favorites.length && newsCards}
-      </div>
+      <div className="news-container">{!!favorites.length && newsCards}</div>
       {photoCards.length > 0 && <h3>Your favorite photos (click to expand)</h3>}
       <div className="rover-photos-container">
         {!!favorites.length && photoCards}
