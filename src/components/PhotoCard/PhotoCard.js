@@ -29,8 +29,8 @@ class PhotoCard extends Component {
            isOpen={this.state.showModal}
            contentLabel="expanded photo"
         >
-          <button onClick={this.handleCloseModal}>x</button>
-          <img className="expanded-rover-photo" src={this.props.image} alt="from the curiosity rover" />
+          <button data-testid="close-image-btn" onClick={this.handleCloseModal}>x</button>
+          <img className="expanded-rover-photo" src={this.props.image} alt="from the curiosity rover - expanded" />
         </Modal>
       </button>
     );

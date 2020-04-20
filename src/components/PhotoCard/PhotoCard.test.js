@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import PhotoCard from "./PhotoCard";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -62,18 +62,14 @@ describe("Photo Card", () => {
       }
     };
     const store = createStore(rootReducer);
-    const { getByText, getByAltText, getByTestId } = render(
+    const { getByAltText, getByTestId } = render(
       <Provider store={store}>
         <Router>
-          <PhotoCard
-            image={mockPhoto.img_src}
-            key={2}
-            testid={mockPhoto.id}
-          />
+          <PhotoCard image={mockPhoto.img_src} key={2} testid={mockPhoto.id} />
         </Router>
       </Provider>
     );
-    expect(getByAltText('from the curiosity rover')).toBeInTheDocument();
-    expect(getByTestId('739467')).toBeInTheDocument();
+    expect(getByAltText("from the curiosity rover")).toBeInTheDocument();
+    expect(getByTestId("739467")).toBeInTheDocument();
   });
 });
