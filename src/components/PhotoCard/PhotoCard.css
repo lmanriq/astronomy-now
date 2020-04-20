@@ -3,6 +3,12 @@
   background-color: #fff;
 }
 
+.photo-card {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .rover-photo {
   width: 12em;
   height: 12em;

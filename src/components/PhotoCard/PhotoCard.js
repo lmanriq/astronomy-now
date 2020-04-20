@@ -50,7 +50,7 @@ class PhotoCard extends Component {
     const btn = favorites.includes(id) ? unFavBtn : favBtn;
 
     return (
-      <article className="photo-card">
+      <article className="photo-card flex-container">
         <button className="rover-photo-container" data-testid={testid}>
           <img
             className="rover-photo"
@@ -72,7 +72,7 @@ class PhotoCard extends Component {
             />
           </Modal>
         </button>
-        <div className="favorites-box flex-container">
+        <div className="favorites-box flex-container photo-favorite">
           {btn}
           <p>Add to Favorites</p>
         </div>
