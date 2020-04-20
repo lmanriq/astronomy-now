@@ -16,7 +16,7 @@ describe("Favorites Page", () => {
         </Router>
       </Provider>
     );
-    expect(getByText("Your Favorite Articles")).toBeInTheDocument();
-    expect(getByText("You have no favorited articles yet!")).toBeInTheDocument();
+    expect(getByText("Your Favorites")).toBeInTheDocument();
+    expect(getByText("You have no favorited articles or photos yet!")).toBeInTheDocument();
   });
 });
