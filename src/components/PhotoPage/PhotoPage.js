@@ -61,7 +61,6 @@ class PhotoPage extends Component {
             wanderings.
           </h2>
         )}
-
         <section className="rover-photos-container">{photoImages}</section>
       </section>
     );
