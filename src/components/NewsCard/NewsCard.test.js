@@ -58,7 +58,9 @@ describe("News Card", () => {
     ).toBeInTheDocument();
     expect(getByText("Add to Favorites")).toBeInTheDocument();
     expect(getByAltText("empty heart icon")).toBeInTheDocument();
-    expect(getByAltText("Piercing the Dark Birthplaces of Massive Stars with Webb")).toBeInTheDocument();
+    expect(
+      getByAltText("Piercing the Dark Birthplaces of Massive Stars with Webb")
+    ).toBeInTheDocument();
   });
 
   it("should have a full heart icon when the empty heart icon is clicked", async () => {
@@ -102,9 +104,11 @@ describe("News Card", () => {
     );
     const emptyIcon = getByAltText("empty heart icon");
     fireEvent.click(emptyIcon);
-    const fullHeartIcon = await waitForElement(() => getByAltText("full heart icon"))
+    const fullHeartIcon = await waitForElement(() =>
+      getByAltText("full heart icon")
+    );
     expect(fullHeartIcon).toBeInTheDocument();
-  })
+  });
 
   it("should go back to an empty icon when clicked twice", async () => {
     const store = createStore(rootReducer);
@@ -147,9 +151,11 @@ describe("News Card", () => {
     );
     const emptyIcon = getByAltText("empty heart icon");
     fireEvent.click(emptyIcon);
-    const fullHeartIcon = await waitForElement(() => getByAltText("full heart icon"))
+    const fullHeartIcon = await waitForElement(() =>
+      getByAltText("full heart icon")
+    );
     expect(fullHeartIcon).toBeInTheDocument();
     fireEvent.click(fullHeartIcon);
     expect(await waitForElement(() => emptyIcon)).toBeInTheDocument();
-  })
+  });
 });

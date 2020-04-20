@@ -8,51 +8,19 @@ import FavoritesPage from "../FavoritesPage/FavoritesPage";
 import IssPage from "../IssPage/IssPage";
 import Footer from "../Footer/Footer";
 import { Route } from "react-router-dom";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 
-if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
+if (process.env.NODE_ENV !== "test") Modal.setAppElement("#root");
 
 function App() {
   return (
     <div className="App">
-      <Route path="/"
-        component={() =>
-          <NavBar />
-        }
-      />
-      <Route path="/" exact 
-        component={() => 
-          <PhotoPage />
-        } 
-      />
-      <Route
-        path="/login"
-        exact
-        component={() =>
-          <LoginPage />
-        }
-      />
-      <Route
-        path="/iss-tracking"
-        exact
-        component={() =>
-          <IssPage />
-        }
-      />
-      <Route
-        path="/hubble-news"
-        exact
-        component={() =>
-          <NewsPage />
-        }
-      />
-      <Route
-        path="/favorites"
-        exact
-        component={() =>
-          <FavoritesPage />
-        }
-      />
+      <Route path="/" component={() => <NavBar />} />
+      <Route path="/" exact component={() => <PhotoPage />} />
+      <Route path="/login" exact component={() => <LoginPage />} />
+      <Route path="/iss-tracking" exact component={() => <IssPage />} />
+      <Route path="/hubble-news" exact component={() => <NewsPage />} />
+      <Route path="/favorites" exact component={() => <FavoritesPage />} />
       <Footer />
     </div>
   );

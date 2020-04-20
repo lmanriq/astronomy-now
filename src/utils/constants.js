@@ -1,8 +1,7 @@
-export const NASA_BASE = 'https://api.nasa.gov'
+export const NASA_BASE = "https://api.nasa.gov";
 
-export const ROVER_ENDPOINT = (date) => 
-  `/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${date}&api_key=K8bT9srIhxHahbiQkbH7EvTichFoJBi02JzMR5Ys`
-
+export const ROVER_ENDPOINT = date =>
+  `/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${date}&api_key=K8bT9srIhxHahbiQkbH7EvTichFoJBi02JzMR5Ys`;
 
 export const POTD_URL =
   "/planetary/apod?api_key=K8bT9srIhxHahbiQkbH7EvTichFoJBi02JzMR5Ys";

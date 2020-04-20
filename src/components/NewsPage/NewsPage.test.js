@@ -103,8 +103,8 @@ describe("News Page", () => {
         release_images: [4606, 4600, 4607]
       }
     ];
-    fetchAllNews.mockResolvedValueOnce(mockNewsData)
-    fetchNewsDetails.mockResolvedValueOnce(mockDetailedData)
+    fetchAllNews.mockResolvedValueOnce(mockNewsData);
+    fetchNewsDetails.mockResolvedValueOnce(mockDetailedData);
     const store = createStore(rootReducer);
     const { getByText } = render(
       <Provider store={store}>
@@ -113,9 +113,17 @@ describe("News Page", () => {
         </Router>
       </Provider>
     );
-    const card1 = await waitForElement(() => getByText("Piercing the Dark Birthplaces of Massive Stars with Webb"))
-    const card2 = await waitForElement(() => getByText("Quasar Tsunamis Rip Across Galaxies"))
-    const card3 = await waitForElement(() => getByText("Cosmic Magnifying Glasses Yield Independent Measure of Universe's Expansion"))
+    const card1 = await waitForElement(() =>
+      getByText("Piercing the Dark Birthplaces of Massive Stars with Webb")
+    );
+    const card2 = await waitForElement(() =>
+      getByText("Quasar Tsunamis Rip Across Galaxies")
+    );
+    const card3 = await waitForElement(() =>
+      getByText(
+        "Cosmic Magnifying Glasses Yield Independent Measure of Universe's Expansion"
+      )
+    );
     expect(card1).toBeInTheDocument();
     expect(card2).toBeInTheDocument();
     expect(card3).toBeInTheDocument();

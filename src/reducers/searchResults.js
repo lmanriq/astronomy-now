@@ -1,7 +1,7 @@
-export const searchResults = (state = [], action) => {
+export const searchResults = (state = {}, action) => {
   switch (action.type) {
     case "LOAD_RESULTS":
-      return [...action.results];
+      return { ...action.results };
     default:
       return state;
   }

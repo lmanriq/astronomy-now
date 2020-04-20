@@ -2,20 +2,20 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .App {
   height: 100%;
   width: 100%;
-  background-color: #27536B;
+  background-color: #27536b;
 }
 
 .main-page {
-  border: 5em solid #27536B;
+  border: 5em solid #27536b;
   padding-top: 6em;
-  background-color: #FFF;
-  min-height: 92vh;;
+  background-color: #fff;
+  min-height: 92vh;
 }
 
 .flex-container {
@@ -25,7 +25,7 @@
 button {
   cursor: pointer;
   border: none;
-  background-color: #F9A52B;
+  background-color: #f9a52b;
   padding: 0.3em;
 }
 

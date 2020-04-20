@@ -40,7 +40,7 @@ export const fetchAllNews = async () => {
   return newsData;
 };
 
-export const fetchNewsDetails = async (newsData) => {
+export const fetchNewsDetails = async newsData => {
   const detailsUrls = newsData.map(story =>
     fetch(
       PROXY_URL + HUBBLE_BASE + HUBBLE_SPECIFIC_STORY_ENDPOINT(story.news_id)
@@ -56,10 +56,10 @@ export const fetchPOTD = async () => {
   const potdResponse = await fetch(NASA_BASE + POTD_URL);
   const potdData = await potdResponse.json();
   return potdData;
-}
+};
 
-export const fetchRoverPhotos = async (date) => {
+export const fetchRoverPhotos = async date => {
   const roverResponse = await fetch(NASA_BASE + ROVER_ENDPOINT(date));
   const roverData = await roverResponse.json();
   return roverData;
-}
+};

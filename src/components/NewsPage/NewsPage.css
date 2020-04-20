@@ -4,6 +4,10 @@
   column-count: 2;
 }
 
+.news-page h3 {
+  margin: 0.5em;
+}
+
 .news-container {
   display: grid;
   grid-template-columns: 1fr 1fr;

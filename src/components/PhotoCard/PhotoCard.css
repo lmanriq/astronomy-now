@@ -3,6 +3,12 @@
   background-color: #fff;
 }
 
+.photo-card {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .rover-photo {
   width: 12em;
   height: 12em;
@@ -10,7 +16,7 @@
 }
 
 .rover-photo:hover {
-  border: 2px solid #F77759;
+  border: 2px solid #f77759;
 }
 
 .expanded-rover-photo {

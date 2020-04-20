@@ -1,5 +1,5 @@
 import React from "react";
-import { render,fireEvent } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import LoginForm from "./LoginForm";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -32,11 +32,11 @@ describe("Login Form ", () => {
         </Router>
       </Provider>
     );
-    const nameInput = getByPlaceholderText('your name');
-    const emailInput = getByPlaceholderText('email');
-    fireEvent.change(nameInput, {target: {value: 'Lili'}});
-    fireEvent.change(emailInput, {target: {value: 'lili@gmail.com'}});
-    expect(nameInput.value).toBe('Lili');
-    expect(emailInput.value).toBe('lili@gmail.com');
-  })
+    const nameInput = getByPlaceholderText("your name");
+    const emailInput = getByPlaceholderText("email");
+    fireEvent.change(nameInput, { target: { value: "Lili" } });
+    fireEvent.change(emailInput, { target: { value: "lili@gmail.com" } });
+    expect(nameInput.value).toBe("Lili");
+    expect(emailInput.value).toBe("lili@gmail.com");
+  });
 });

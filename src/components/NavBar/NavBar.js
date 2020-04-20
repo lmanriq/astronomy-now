@@ -3,7 +3,7 @@ import "./NavBar.css";
 import { NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const NavBar = props => {
   if (props.location.pathname === "/login") {
@@ -27,7 +27,11 @@ const NavBar = props => {
   return (
     <header className="flex-container">
       <article className="flex-container">
-        <img src="/astronomy-now/images/saturn.svg" alt="saturn logo" className="logo" />
+        <img
+          src="/astronomy-now/images/saturn.svg"
+          alt="saturn logo"
+          className="logo"
+        />
         <div className="welcome-msg ">
           <h1>Astronomy Now</h1>
           <h2>Welcome, {username}</h2>
@@ -42,7 +46,10 @@ const NavBar = props => {
           style={{ textDecoration: "none" }}
         >
           <div className="nav-btn-container flex-container">
-            <img src="/astronomy-now/images/spaceship.svg" alt="spaceship icon" />
+            <img
+              src="/astronomy-now/images/spaceship.svg"
+              alt="spaceship icon"
+            />
             <button>
               <p>Photos of the Day</p>
             </button>
@@ -66,7 +73,10 @@ const NavBar = props => {
           style={{ textDecoration: "none" }}
         >
           <div className="nav-btn-container flex-container">
-            <img src="/astronomy-now/images/hubble.svg" alt="Hubble telescope icon" />
+            <img
+              src="/astronomy-now/images/hubble.svg"
+              alt="Hubble telescope icon"
+            />
             <button>
               <p>Hubble News</p>
             </button>
@@ -78,7 +88,10 @@ const NavBar = props => {
           style={{ textDecoration: "none" }}
         >
           <div className="nav-btn-container flex-container">
-            <img src="/astronomy-now/images/alien.svg" alt="alien with heart eyes icon" />
+            <img
+              src="/astronomy-now/images/alien.svg"
+              alt="alien with heart eyes icon"
+            />
             <button>
               <p>Favorites</p>
             </button>
@@ -95,7 +108,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   logoutUser: () => dispatch(logoutUser())
-})
+});
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar));
 
@@ -103,4 +116,4 @@ NavBar.propTypes = {
   user: PropTypes.object,
   location: PropTypes.object,
   logoutUser: PropTypes.func
-}
+};

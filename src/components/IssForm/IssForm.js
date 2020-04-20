@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import "./IssForm.css";
 import { connect } from "react-redux";
-import { loadSearchResults, showError, removeError } from "../../actions";
+import {
+  loadSearchResults,
+  showError,
+  removeError,
+  updateLoading
+} from "../../actions";
 import PropTypes from "prop-types";
 import { fetchPasstimes } from "../../utils/apiCalls";
 
@@ -23,13 +28,23 @@ class IssForm extends Component {
 
   async searchPassover() {
     const { lat, lon } = this.state;
-    const { loadSearchResults, showError, removeError } = this.props;
+    const {
+      loadSearchResults,
+      showError,
+      removeError,
+      updateLoading
+    } = this.props;
     if (lat < 80 && lat > -80 && lon < 180 && lon > -180) {
       try {
+        updateLoading(true);
         const passData = await fetchPasstimes(lat, lon);
+        console.log(passData);
+        loadSearchResults(passData);
+        this.setState({ lat: "", lon: "" });
+        updateLoading(false);
         removeError();
-        loadSearchResults(passData.response);
       } catch (error) {
+        updateLoading(false);
         showError(error.message);
         setTimeout(() => {
           removeError();
@@ -47,11 +62,13 @@ class IssForm extends Component {
     const { lat, lon } = this.state;
     const { searchResults, error } = this.props;
     const disabled = !lat || !lon;
-    const resultsList = searchResults.map((result, index) => (
-      <li key={index}>
-        {moment(new Date(result.risetime * 1000)).format("LLL")}
-      </li>
-    ));
+    const resultsList = searchResults.response
+      ? searchResults.response.map((result, index) => (
+          <li key={index}>
+            {moment(new Date(result.risetime * 1000)).format("LLL")}
+          </li>
+        ))
+      : "";
     return (
       <section className="form-section">
         <h2>When will the ISS pass over me?</h2>
@@ -92,6 +109,15 @@ class IssForm extends Component {
         </form>
         <section className="search-results">
           {error && <h4>{error}</h4>}
+          {searchResults.request && (
+            <h4>
+              The ISS will be over {searchResults.request.latitude}{" "}
+              {searchResults.request.latitude > 0 ? "N" : "S"},{" "}
+              {searchResults.request.longitude}{" "}
+              {searchResults.request.longitude > 0 ? "E" : "W"} at the following
+              times:
+            </h4>
+          )}
           <ul>{!error && resultsList}</ul>
         </section>
       </section>
@@ -101,21 +127,25 @@ class IssForm extends Component {
 
 const mapStateToProps = state => ({
   searchResults: state.searchResults,
-  error: state.error
+  error: state.error,
+  isLoading: state.isLoading
 });
 
 const mapDispatchToProps = dispatch => ({
   loadSearchResults: results => dispatch(loadSearchResults(results)),
   showError: error => dispatch(showError(error)),
-  removeError: () => dispatch(removeError())
+  removeError: () => dispatch(removeError()),
+  updateLoading: loading => dispatch(updateLoading(loading))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(IssForm);
 
 IssForm.propTypes = {
-  searchResults: PropTypes.array,
+  searchResults: PropTypes.object,
   error: PropTypes.string,
   loadSearchResults: PropTypes.func,
   showError: PropTypes.func,
-  removeError: PropTypes.func
+  removeError: PropTypes.func,
+  isLoading: PropTypes.bool,
+  updateLoading: PropTypes.func
 };

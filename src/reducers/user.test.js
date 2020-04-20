@@ -6,7 +6,7 @@ describe("user", () => {
     const result = user(undefined, {});
     expect(result).toEqual(expectedResult);
   });
-  
+
   it("when receiving LOGIN_USER action, it should return the user object", () => {
     const sampleUser = {
       name: "Alan",

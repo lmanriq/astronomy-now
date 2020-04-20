@@ -1,24 +1,22 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import FavoritesPage from "./FavoritesPage";
+import LoadingPage from "./LoadingPage";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "../../reducers";
 
-describe("Favorites Page", () => {
-  it("Should render what we expect (no favorites)", () => {
+describe("ISS Map", () => {
+  it("Should render what we expect", () => {
     const store = createStore(rootReducer);
-    const { getByText } = render(
+    const { getByText, getByAltText } = render(
       <Provider store={store}>
         <Router>
-          <FavoritesPage />
+          <LoadingPage />
         </Router>
       </Provider>
     );
-    expect(getByText("Your Favorites")).toBeInTheDocument();
-    expect(
-      getByText("You have no favorited articles or photos yet!")
-    ).toBeInTheDocument();
+    expect(getByText("Loading...")).toBeInTheDocument();
+    expect(getByAltText("loading gif")).toBeInTheDocument();
   });
 });

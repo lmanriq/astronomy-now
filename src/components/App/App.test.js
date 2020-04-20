@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  render,
-  fireEvent,
-  waitForElement
-} from "@testing-library/react";
+import { render, fireEvent, waitForElement } from "@testing-library/react";
 import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -95,6 +91,121 @@ const mockYesterdayRover = {
   photos: [
     {
       id: 102686,
+      sol: 1004,
+      camera: {
+        id: 20,
+        name: "FHAZ",
+        rover_id: 5,
+        full_name: "Front Hazard Avoidance Camera"
+      },
+      img_src:
+        "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01004/opgs/edr/fcam/FRB_486615455EDR_F0481570FHAZ00323M_.JPG",
+      earth_date: "2015-06-03",
+      rover: {
+        id: 5,
+        name: "Curiosity",
+        landing_date: "2012-08-06",
+        launch_date: "2011-11-26",
+        status: "active",
+        max_sol: 2736,
+        max_date: "2020-04-17",
+        total_photos: 416179,
+        cameras: [
+          {
+            name: "FHAZ",
+            full_name: "Front Hazard Avoidance Camera"
+          },
+          {
+            name: "NAVCAM",
+            full_name: "Navigation Camera"
+          },
+          {
+            name: "MAST",
+            full_name: "Mast Camera"
+          },
+          {
+            name: "CHEMCAM",
+            full_name: "Chemistry and Camera Complex"
+          },
+          {
+            name: "MAHLI",
+            full_name: "Mars Hand Lens Imager"
+          },
+          {
+            name: "MARDI",
+            full_name: "Mars Descent Imager"
+          },
+          {
+            name: "RHAZ",
+            full_name: "Rear Hazard Avoidance Camera"
+          }
+        ]
+      }
+    }
+  ]
+};
+
+const mockRover3 = {
+  photos: [
+    {
+      id: 1026853,
+      sol: 1004,
+      camera: {
+        id: 20,
+        name: "FHAZ",
+        rover_id: 5,
+        full_name: "Front Hazard Avoidance Camera"
+      },
+      img_src:
+        "http://mars.jpl.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01004/opgs/edr/fcam/FLB_486615455EDR_F0481570FHAZ00323M_.JPG",
+      earth_date: "2015-06-03",
+      rover: {
+        id: 5,
+        name: "Curiosity",
+        landing_date: "2012-08-06",
+        launch_date: "2011-11-26",
+        status: "active",
+        max_sol: 2736,
+        max_date: "2020-04-17",
+        total_photos: 416179,
+        cameras: [
+          {
+            name: "FHAZ",
+            full_name: "Front Hazard Avoidance Camera"
+          },
+          {
+            name: "NAVCAM",
+            full_name: "Navigation Camera"
+          },
+          {
+            name: "MAST",
+            full_name: "Mast Camera"
+          },
+          {
+            name: "CHEMCAM",
+            full_name: "Chemistry and Camera Complex"
+          },
+          {
+            name: "MAHLI",
+            full_name: "Mars Hand Lens Imager"
+          },
+          {
+            name: "MARDI",
+            full_name: "Mars Descent Imager"
+          },
+          {
+            name: "RHAZ",
+            full_name: "Rear Hazard Avoidance Camera"
+          }
+        ]
+      }
+    }
+  ]
+};
+const mockRover4 = {
+  photos: [
+    {
+      id: 1026444,
       sol: 1004,
       camera: {
         id: 20,
@@ -271,10 +382,12 @@ const mockDetailedData = [
 ];
 
 describe("App", () => {
-  it("Should render the photo page on load", () => {
+  it("Should render the photo page on load", async () => {
     fetchPOTD.mockResolvedValueOnce(mockPOTD);
     fetchRoverPhotos.mockResolvedValueOnce(mockTodayRover);
     fetchRoverPhotos.mockResolvedValueOnce(mockYesterdayRover);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover3);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover4);
     const store = createStore(rootReducer);
     const { getByText } = render(
       <Provider store={store}>
@@ -283,13 +396,17 @@ describe("App", () => {
         </Router>
       </Provider>
     );
-    expect(getByText("NASA's Astronomy Photo of The Day")).toBeInTheDocument();
+    expect(
+      await waitForElement(() => getByText("NASA's Astronomy Photo of The Day"))
+    ).toBeInTheDocument();
   });
 
   it("Should expand a rover photo when clicked on", async () => {
     fetchPOTD.mockResolvedValueOnce(mockPOTD);
     fetchRoverPhotos.mockResolvedValueOnce(mockTodayRover);
     fetchRoverPhotos.mockResolvedValueOnce(mockYesterdayRover);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover3);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover4);
 
     const store = createStore(rootReducer);
     const { getByAltText, getByTestId } = render(
@@ -328,6 +445,8 @@ describe("App", () => {
     fetchPOTD.mockResolvedValueOnce(mockPOTD);
     fetchRoverPhotos.mockResolvedValueOnce(mockTodayRover);
     fetchRoverPhotos.mockResolvedValueOnce(mockYesterdayRover);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover3);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover4);
 
     const store = createStore(rootReducer);
     const { getByText } = render(
@@ -349,6 +468,8 @@ describe("App", () => {
     fetchPOTD.mockResolvedValueOnce(mockPOTD);
     fetchRoverPhotos.mockResolvedValueOnce(mockTodayRover);
     fetchRoverPhotos.mockResolvedValueOnce(mockYesterdayRover);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover3);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover4);
 
     const store = createStore(rootReducer);
     const { getByText, getByPlaceholderText } = render(
@@ -372,10 +493,12 @@ describe("App", () => {
     expect(getByText("Welcome, Lili")).toBeInTheDocument();
   });
 
-  it("should be able to navigate to the ISS page", () => {
+  it("should be able to navigate to the ISS page", async () => {
     fetchPOTD.mockResolvedValueOnce(mockPOTD);
     fetchRoverPhotos.mockResolvedValueOnce(mockTodayRover);
     fetchRoverPhotos.mockResolvedValueOnce(mockYesterdayRover);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover3);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover4);
 
     const store = createStore(rootReducer);
     const { getByText } = render(
@@ -392,20 +515,26 @@ describe("App", () => {
     const issBtn = getByText("ISS Tracking");
     fireEvent.click(issBtn);
     expect(
-      getByText("International Space Station Tracking")
+      await waitForElement(() =>
+        getByText("International Space Station Tracking")
+      )
     ).toBeInTheDocument();
 
     fetchPOTD.mockResolvedValueOnce(mockPOTD);
     fetchRoverPhotos.mockResolvedValueOnce(mockTodayRover);
     fetchRoverPhotos.mockResolvedValueOnce(mockYesterdayRover);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover3);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover4);
 
     fireEvent.click(getByText("Photos of the Day"));
   });
 
-  it("should be able to navigate to the Hubble News page", () => {
+  it("should be able to navigate to the Hubble News page", async () => {
     fetchPOTD.mockResolvedValueOnce(mockPOTD);
     fetchRoverPhotos.mockResolvedValueOnce(mockTodayRover);
     fetchRoverPhotos.mockResolvedValueOnce(mockYesterdayRover);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover3);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover4);
     fetchAllNews.mockResolvedValueOnce(mockNewsData);
     fetchNewsDetails.mockResolvedValueOnce(mockDetailedData);
 
@@ -421,7 +550,9 @@ describe("App", () => {
     const hubbleBtn = getByText("Hubble News");
     fireEvent.click(hubbleBtn);
     expect(
-      getByText("News from the Hubble Space Telescope")
+      await waitForElement(() =>
+        getByText("News from the Hubble Space Telescope")
+      )
     ).toBeInTheDocument();
   });
 
@@ -429,6 +560,8 @@ describe("App", () => {
     fetchPOTD.mockResolvedValueOnce(mockPOTD);
     fetchRoverPhotos.mockResolvedValueOnce(mockTodayRover);
     fetchRoverPhotos.mockResolvedValueOnce(mockYesterdayRover);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover3);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover4);
     fetchAllNews.mockResolvedValueOnce(mockNewsData);
     fetchNewsDetails.mockResolvedValueOnce(mockDetailedData);
 
@@ -443,13 +576,15 @@ describe("App", () => {
 
     const favsBtn = getByText("Favorites");
     fireEvent.click(favsBtn);
-    expect(getByText("Your Favorite Articles")).toBeInTheDocument();
+    expect(getByText("Your Favorites")).toBeInTheDocument();
   });
 
   it("should be able to favorite news stories and see them on the favorites page", async () => {
     fetchPOTD.mockResolvedValueOnce(mockPOTD);
     fetchRoverPhotos.mockResolvedValueOnce(mockTodayRover);
     fetchRoverPhotos.mockResolvedValueOnce(mockYesterdayRover);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover3);
+    fetchRoverPhotos.mockResolvedValueOnce(mockRover4);
 
     const store = createStore(rootReducer);
     const { getByText, getByTestId } = render(

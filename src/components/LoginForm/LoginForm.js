@@ -3,19 +3,19 @@ import "./LoginForm.css";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions";
 import { NavLink } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 class LoginForm extends Component {
   constructor() {
     super();
     this.state = {
-      name: '',
-      email: ''
-    }
+      name: "",
+      email: ""
+    };
   }
 
   handleChange(e) {
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   submitLogin() {
@@ -24,17 +24,35 @@ class LoginForm extends Component {
 
   render() {
     const disabled = !this.state.name || !this.state.email;
-    return(
+    return (
       <form className="flex-container">
         <label>First Name:</label>
-        <input name="name" type="text" placeholder="your name" value={this.state.name} onChange={(e) => this.handleChange(e)} />
+        <input
+          name="name"
+          type="text"
+          placeholder="your name"
+          value={this.state.name}
+          onChange={e => this.handleChange(e)}
+        />
         <label>Email:</label>
-        <input name="email" type="email" placeholder="email" value={this.state.email} onChange={(e) => this.handleChange(e)} />
+        <input
+          name="email"
+          type="email"
+          placeholder="email"
+          value={this.state.email}
+          onChange={e => this.handleChange(e)}
+        />
         <NavLink exact to="/">
-          <button type="button" onClick={this.submitLogin()} disabled={disabled}>login</button>
+          <button
+            type="button"
+            onClick={this.submitLogin()}
+            disabled={disabled}
+          >
+            login
+          </button>
         </NavLink>
       </form>
-    )
+    );
   }
 }
 
@@ -46,4 +64,4 @@ export default connect(null, mapDispatchToProps)(LoginForm);
 
 LoginForm.propTypes = {
   loginUser: PropTypes.func
-}
+};

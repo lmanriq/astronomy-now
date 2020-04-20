@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import "leaflet/dist/leaflet.css";
 import "./IssMap.css";
 import { Map, Marker, TileLayer } from "react-leaflet";
-import L from 'leaflet';
-import PropTypes from 'prop-types';
+import L from "leaflet";
+import PropTypes from "prop-types";
 
 class IssMap extends Component {
   render() {
@@ -13,15 +13,12 @@ class IssMap extends Component {
     longitude = parseInt(longitude);
     latitude = parseInt(latitude);
     const issIcon = new L.Icon({
-      iconUrl: '/astronomy-now/images/iss-black.svg',
+      iconUrl: "/astronomy-now/images/iss-black.svg",
       iconSize: [60, 60]
-    })
+    });
     if (longitude && latitude) {
       return (
-        <Map
-          center={[latitude, longitude]}
-          zoom={4}
-        >
+        <Map center={[latitude, longitude]} zoom={4}>
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -43,4 +40,4 @@ export default connect(mapStateToProps)(IssMap);
 
 IssMap.propTypes = {
   issPosition: PropTypes.object
-}
+};
