@@ -28,7 +28,7 @@ const NavBar = props => {
     <header className="flex-container">
       <article className="flex-container">
         <img
-          src="/astronomy-now/images/saturn.svg"
+          src="/images/saturn.svg"
           alt="saturn logo"
           className="logo"
         />
@@ -47,7 +47,7 @@ const NavBar = props => {
         >
           <div className="nav-btn-container flex-container">
             <img
-              src="/astronomy-now/images/spaceship.svg"
+              src="/images/spaceship.svg"
               alt="spaceship icon"
             />
             <button>
@@ -61,7 +61,7 @@ const NavBar = props => {
           style={{ textDecoration: "none" }}
         >
           <div className="nav-btn-container flex-container">
-            <img src="/astronomy-now/images/iss.svg" alt="ISS icon" />
+            <img src="/images/iss.svg" alt="ISS icon" />
             <button>
               <p>ISS Tracking</p>
             </button>
@@ -74,7 +74,7 @@ const NavBar = props => {
         >
           <div className="nav-btn-container flex-container">
             <img
-              src="/astronomy-now/images/hubble.svg"
+              src="/images/hubble.svg"
               alt="Hubble telescope icon"
             />
             <button>
@@ -89,7 +89,7 @@ const NavBar = props => {
         >
           <div className="nav-btn-container flex-container">
             <img
-              src="/astronomy-now/images/alien.svg"
+              src="/images/alien.svg"
               alt="alien with heart eyes icon"
             />
             <button>

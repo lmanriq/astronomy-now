@@ -38,7 +38,7 @@ class PhotoCard extends Component {
         <img
           data-testid={`news-${id}`}
           className="heart-icon"
-          src="/astronomy-now/images/empty-heart.svg"
+          src="/images/empty-heart.svg"
           alt="empty heart icon"
         />
       </button>
@@ -48,7 +48,7 @@ class PhotoCard extends Component {
         <img
           data-testid={`news-${id}`}
           className="heart-icon"
-          src="/astronomy-now/images/full-heart.svg"
+          src="/images/full-heart.svg"
           alt="full heart icon"
         />
       </button>

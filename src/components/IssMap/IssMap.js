@@ -13,7 +13,7 @@ class IssMap extends Component {
     longitude = parseInt(longitude);
     latitude = parseInt(latitude);
     const issIcon = new L.Icon({
-      iconUrl: "/astronomy-now/images/iss-black.svg",
+      iconUrl: "/images/iss-black.svg",
       iconSize: [60, 60]
     });
     if (longitude && latitude) {

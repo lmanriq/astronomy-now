@@ -6,7 +6,7 @@ const LoadingPage = () => {
     <section className="main-page flex-container loading-page">
       <h1>Loading...</h1>
       <img
-        src="/astronomy-now/images/loading-astronaut.gif"
+        src="/images/loading-astronaut.gif"
         alt="loading gif"
       />
     </section>
