@@ -65,7 +65,7 @@ class IssForm extends Component {
     const resultsList = searchResults.response
       ? searchResults.response.map((result, index) => (
           <li key={index}>
-            {moment(Math.floor(new Date(result.risetime * 1000))).format("LLL")}
+            {moment(new Date(result.risetime * 1000)).format("LLL")}
           </li>
         ))
       : "";
