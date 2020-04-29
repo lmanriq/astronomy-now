@@ -10,7 +10,7 @@ import {
 import PropTypes from "prop-types";
 import { fetchPasstimes } from "../../utils/apiCalls";
 
-const moment = require("moment");
+const moment = require("moment-timezone");
 moment().format();
 
 class IssForm extends Component {
@@ -38,7 +38,6 @@ class IssForm extends Component {
       try {
         updateLoading(true);
         const passData = await fetchPasstimes(lat, lon);
-        console.log(passData);
         loadSearchResults(passData);
         this.setState({ lat: "", lon: "" });
         updateLoading(false);
@@ -65,7 +64,7 @@ class IssForm extends Component {
     const resultsList = searchResults.response
       ? searchResults.response.map((result, index) => (
           <li key={index}>
-            {moment(new Date(result.risetime * 1000)).format("LLL")}
+            {moment(new Date(result.risetime * 1000)).tz('America/Denver').format("LLL")}
           </li>
         ))
       : "";
@@ -115,7 +114,7 @@ class IssForm extends Component {
               {searchResults.request.latitude > 0 ? "N" : "S"},{" "}
               {searchResults.request.longitude}{" "}
               {searchResults.request.longitude > 0 ? "E" : "W"} at the following
-              times:
+              times (MST):
             </h4>
           )}
           <ul>{!error && resultsList}</ul>
