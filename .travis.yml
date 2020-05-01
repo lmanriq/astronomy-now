@@ -7,5 +7,5 @@ deploy:
   provider: heroku
   api_key:
     secure: G7FYWdkHct1BX5B+IP1rq2XWGGdOtEarJyrlyDxTp7ensh7S7l553fzy3X1exfWhiJOYe4mOUrmQUYncDL956P5PvMcQk5tocmZd8LEWUk7umRzgotYzh7B1fBOdZOS+WPrl2ds+ZfLYVrhzMtM/K/C6OWHJD4tPXa6SZfkJ4GJk/I8DeMfIOfhJSkfkHUe9sPC2r/wfX/b4Pci25xLSCiuRNUY/MnqmkHbCJ03Mc76F2phXICIKxzp8uSoJM0w0SjrXyeOP/ADYKiMQe2I2EmnedOX5DiM55oI1L41PantwdOn4SO9pP2vg8MqH+cRHrLyFRW/7wkxCf08VuLWkfBuP90GoRwGs8HfxaY2OfDzvUCYjPQ1EgeQMKlZT3XYNOLjbfkSFpJDr5jUK+mhw/EawQ+n/PfSTqTDbeVKIKVe8jmMK8qmbIc86dIXBA+AUyvb3WssDduyLPF34HjaYv2Sl3GEu++NJa2tHCEcRNpXliYinnZGi7UN7/pyFTQCLapxP5q5SlGZucSeg3WSl/YT61N+iGXk3l4X5Hl/RGJi+n9rzUJtNvCtmmV6+LKVyJ2urVWpnt05wbQdCpTtvB7RDfy5KmVpnezcQilDhvMVYRWR7Nu75+EAr43L0qufJ5Hnr8/+c0GXNbslAeXQRwz9TdL31bnEZKDj1v2cuTiE=
-  app: cool-app-name
+  app: astronomy-now
   skip_cleanup: true
